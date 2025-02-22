@@ -1,0 +1,9 @@
+version: v1
+name: buf.build/xskydev/go-money-pb
+breaking:
+  use:
+    - FILE
+lint:
+  use:
+    - STANDARD
+  allow_comment_ignores: true

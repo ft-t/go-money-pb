@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package gomoneypb.v1;
+import "google/protobuf/timestamp.proto";
+
+message Account {
+  int64 id = 1;
+
+  string name = 2;
+  string currency = 3;
+
+  string currency_balance = 4;
+
+  map<string, string> extra = 5;
+
+  google.protobuf.Timestamp updated_at = 6;
+  optional google.protobuf.Timestamp deleted_at = 7;
+}

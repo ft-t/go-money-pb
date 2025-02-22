@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package gomoneypb.accounts.v1;
+
+import "gomoneypb/v1/account.proto";
+
+service AccountsService {
+  rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {}
+
+  rpc ListAccounts(ListAccountsRequest) returns (ListAccountsResponse) {}
+}
+
+message ListAccountsRequest {}
+
+message ListAccountsResponse {
+  message AccountItem {
+    gomoneypb.v1.Account account = 1;
+  }
+
+  repeated  AccountItem accounts = 1;
+}
+
+message CreateAccountRequest {
+  gomoneypb.v1.Account account = 1;
+}
+
+message CreateAccountResponse {
+  gomoneypb.v1.Account account = 1;
+}
