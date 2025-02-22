@@ -45,6 +45,11 @@ export class Account extends Message<Account> {
    */
   deletedAt?: Timestamp;
 
+  /**
+   * @generated from field: string type = 8;
+   */
+  type = "";
+
   constructor(data?: PartialMessage<Account>) {
     super();
     proto3.util.initPartial(data, this);
@@ -60,6 +65,7 @@ export class Account extends Message<Account> {
     { no: 5, name: "extra", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
     { no: 6, name: "updated_at", kind: "message", T: Timestamp },
     { no: 7, name: "deleted_at", kind: "message", T: Timestamp, opt: true },
+    { no: 8, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Account {

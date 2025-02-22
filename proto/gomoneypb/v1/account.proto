@@ -15,4 +15,6 @@ message Account {
 
   google.protobuf.Timestamp updated_at = 6;
   optional google.protobuf.Timestamp deleted_at = 7;
+
+  string type = 8;
 }

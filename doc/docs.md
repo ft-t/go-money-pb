@@ -16,6 +16,12 @@
   
     - [AccountsService](#gomoneypb-accounts-v1-AccountsService)
   
+- [gomoneypb/exchange/v1/exchange.proto](#gomoneypb_exchange_v1_exchange-proto)
+    - [ExchangeCurrencyRequest](#gomoneypb-exchange-v1-ExchangeCurrencyRequest)
+    - [ExchangeCurrencyResponse](#gomoneypb-exchange-v1-ExchangeCurrencyResponse)
+  
+    - [ExchangeService](#gomoneypb-exchange-v1-ExchangeService)
+  
 - [gomoneypb/users/v1/users.proto](#gomoneypb_users_v1_users-proto)
     - [LoginRequest](#gomoneypb-users-v1-LoginRequest)
     - [LoginResponse](#gomoneypb-users-v1-LoginResponse)
@@ -48,6 +54,7 @@
 | extra | [Account.ExtraEntry](#gomoneypb-v1-Account-ExtraEntry) | repeated |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | deleted_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| type | [string](#string) |  |  |
 
 
 
@@ -171,6 +178,64 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateAccount | [CreateAccountRequest](#gomoneypb-accounts-v1-CreateAccountRequest) | [CreateAccountResponse](#gomoneypb-accounts-v1-CreateAccountResponse) |  |
 | ListAccounts | [ListAccountsRequest](#gomoneypb-accounts-v1-ListAccountsRequest) | [ListAccountsResponse](#gomoneypb-accounts-v1-ListAccountsResponse) |  |
+
+ 
+
+
+
+<a name="gomoneypb_exchange_v1_exchange-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## gomoneypb/exchange/v1/exchange.proto
+
+
+
+<a name="gomoneypb-exchange-v1-ExchangeCurrencyRequest"></a>
+
+### ExchangeCurrencyRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| from_currency | [string](#string) |  |  |
+| to_currency | [string](#string) |  |  |
+| amount | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-exchange-v1-ExchangeCurrencyResponse"></a>
+
+### ExchangeCurrencyResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| amount | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="gomoneypb-exchange-v1-ExchangeService"></a>
+
+### ExchangeService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| ExchangeCurrency | [ExchangeCurrencyRequest](#gomoneypb-exchange-v1-ExchangeCurrencyRequest) | [ExchangeCurrencyResponse](#gomoneypb-exchange-v1-ExchangeCurrencyResponse) |  |
 
  
 
