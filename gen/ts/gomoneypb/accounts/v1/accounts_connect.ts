@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateAccountRequest, CreateAccountResponse, ListAccountsRequest, ListAccountsResponse } from "./accounts_pb";
+import { CreateAccountRequest, CreateAccountResponse, ListAccountsRequest, ListAccountsResponse, UpdateAccountRequest, UpdateAccountResponse } from "./accounts_pb";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -19,6 +19,15 @@ export const AccountsService = {
       name: "CreateAccount",
       I: CreateAccountRequest,
       O: CreateAccountResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc gomoneypb.accounts.v1.AccountsService.UpdateAccount
+     */
+    updateAccount: {
+      name: "UpdateAccount",
+      I: UpdateAccountRequest,
+      O: UpdateAccountResponse,
       kind: MethodKind.Unary,
     },
     /**

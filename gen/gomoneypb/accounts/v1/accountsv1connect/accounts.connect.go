@@ -36,6 +36,9 @@ const (
 	// AccountsServiceCreateAccountProcedure is the fully-qualified name of the AccountsService's
 	// CreateAccount RPC.
 	AccountsServiceCreateAccountProcedure = "/gomoneypb.accounts.v1.AccountsService/CreateAccount"
+	// AccountsServiceUpdateAccountProcedure is the fully-qualified name of the AccountsService's
+	// UpdateAccount RPC.
+	AccountsServiceUpdateAccountProcedure = "/gomoneypb.accounts.v1.AccountsService/UpdateAccount"
 	// AccountsServiceListAccountsProcedure is the fully-qualified name of the AccountsService's
 	// ListAccounts RPC.
 	AccountsServiceListAccountsProcedure = "/gomoneypb.accounts.v1.AccountsService/ListAccounts"
@@ -45,12 +48,14 @@ const (
 var (
 	accountsServiceServiceDescriptor             = v1.File_gomoneypb_accounts_v1_accounts_proto.Services().ByName("AccountsService")
 	accountsServiceCreateAccountMethodDescriptor = accountsServiceServiceDescriptor.Methods().ByName("CreateAccount")
+	accountsServiceUpdateAccountMethodDescriptor = accountsServiceServiceDescriptor.Methods().ByName("UpdateAccount")
 	accountsServiceListAccountsMethodDescriptor  = accountsServiceServiceDescriptor.Methods().ByName("ListAccounts")
 )
 
 // AccountsServiceClient is a client for the gomoneypb.accounts.v1.AccountsService service.
 type AccountsServiceClient interface {
 	CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error)
+	UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error)
 	ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)
 }
 
@@ -70,6 +75,12 @@ func NewAccountsServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(accountsServiceCreateAccountMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		updateAccount: connect.NewClient[v1.UpdateAccountRequest, v1.UpdateAccountResponse](
+			httpClient,
+			baseURL+AccountsServiceUpdateAccountProcedure,
+			connect.WithSchema(accountsServiceUpdateAccountMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		listAccounts: connect.NewClient[v1.ListAccountsRequest, v1.ListAccountsResponse](
 			httpClient,
 			baseURL+AccountsServiceListAccountsProcedure,
@@ -82,12 +93,18 @@ func NewAccountsServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 // accountsServiceClient implements AccountsServiceClient.
 type accountsServiceClient struct {
 	createAccount *connect.Client[v1.CreateAccountRequest, v1.CreateAccountResponse]
+	updateAccount *connect.Client[v1.UpdateAccountRequest, v1.UpdateAccountResponse]
 	listAccounts  *connect.Client[v1.ListAccountsRequest, v1.ListAccountsResponse]
 }
 
 // CreateAccount calls gomoneypb.accounts.v1.AccountsService.CreateAccount.
 func (c *accountsServiceClient) CreateAccount(ctx context.Context, req *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error) {
 	return c.createAccount.CallUnary(ctx, req)
+}
+
+// UpdateAccount calls gomoneypb.accounts.v1.AccountsService.UpdateAccount.
+func (c *accountsServiceClient) UpdateAccount(ctx context.Context, req *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error) {
+	return c.updateAccount.CallUnary(ctx, req)
 }
 
 // ListAccounts calls gomoneypb.accounts.v1.AccountsService.ListAccounts.
@@ -98,6 +115,7 @@ func (c *accountsServiceClient) ListAccounts(ctx context.Context, req *connect.R
 // AccountsServiceHandler is an implementation of the gomoneypb.accounts.v1.AccountsService service.
 type AccountsServiceHandler interface {
 	CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error)
+	UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error)
 	ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)
 }
 
@@ -113,6 +131,12 @@ func NewAccountsServiceHandler(svc AccountsServiceHandler, opts ...connect.Handl
 		connect.WithSchema(accountsServiceCreateAccountMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	accountsServiceUpdateAccountHandler := connect.NewUnaryHandler(
+		AccountsServiceUpdateAccountProcedure,
+		svc.UpdateAccount,
+		connect.WithSchema(accountsServiceUpdateAccountMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	accountsServiceListAccountsHandler := connect.NewUnaryHandler(
 		AccountsServiceListAccountsProcedure,
 		svc.ListAccounts,
@@ -123,6 +147,8 @@ func NewAccountsServiceHandler(svc AccountsServiceHandler, opts ...connect.Handl
 		switch r.URL.Path {
 		case AccountsServiceCreateAccountProcedure:
 			accountsServiceCreateAccountHandler.ServeHTTP(w, r)
+		case AccountsServiceUpdateAccountProcedure:
+			accountsServiceUpdateAccountHandler.ServeHTTP(w, r)
 		case AccountsServiceListAccountsProcedure:
 			accountsServiceListAccountsHandler.ServeHTTP(w, r)
 		default:
@@ -136,6 +162,10 @@ type UnimplementedAccountsServiceHandler struct{}
 
 func (UnimplementedAccountsServiceHandler) CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("gomoneypb.accounts.v1.AccountsService.CreateAccount is not implemented"))
+}
+
+func (UnimplementedAccountsServiceHandler) UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("gomoneypb.accounts.v1.AccountsService.UpdateAccount is not implemented"))
 }
 
 func (UnimplementedAccountsServiceHandler) ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error) {

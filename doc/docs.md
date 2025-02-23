@@ -13,6 +13,9 @@
     - [ListAccountsRequest](#gomoneypb-accounts-v1-ListAccountsRequest)
     - [ListAccountsResponse](#gomoneypb-accounts-v1-ListAccountsResponse)
     - [ListAccountsResponse.AccountItem](#gomoneypb-accounts-v1-ListAccountsResponse-AccountItem)
+    - [UpdateAccountRequest](#gomoneypb-accounts-v1-UpdateAccountRequest)
+    - [UpdateAccountRequest.ExtraEntry](#gomoneypb-accounts-v1-UpdateAccountRequest-ExtraEntry)
+    - [UpdateAccountResponse](#gomoneypb-accounts-v1-UpdateAccountResponse)
   
     - [AccountsService](#gomoneypb-accounts-v1-AccountsService)
   
@@ -162,6 +165,55 @@
 
 
 
+
+<a name="gomoneypb-accounts-v1-UpdateAccountRequest"></a>
+
+### UpdateAccountRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int32](#int32) |  |  |
+| name | [string](#string) |  |  |
+| extra | [UpdateAccountRequest.ExtraEntry](#gomoneypb-accounts-v1-UpdateAccountRequest-ExtraEntry) | repeated |  |
+| type | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-accounts-v1-UpdateAccountRequest-ExtraEntry"></a>
+
+### UpdateAccountRequest.ExtraEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-accounts-v1-UpdateAccountResponse"></a>
+
+### UpdateAccountResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| account | [gomoneypb.v1.Account](#gomoneypb-v1-Account) |  |  |
+
+
+
+
+
  
 
  
@@ -177,6 +229,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateAccount | [CreateAccountRequest](#gomoneypb-accounts-v1-CreateAccountRequest) | [CreateAccountResponse](#gomoneypb-accounts-v1-CreateAccountResponse) |  |
+| UpdateAccount | [UpdateAccountRequest](#gomoneypb-accounts-v1-UpdateAccountRequest) | [UpdateAccountResponse](#gomoneypb-accounts-v1-UpdateAccountResponse) |  |
 | ListAccounts | [ListAccountsRequest](#gomoneypb-accounts-v1-ListAccountsRequest) | [ListAccountsResponse](#gomoneypb-accounts-v1-ListAccountsResponse) |  |
 
  

@@ -6,8 +6,20 @@ import "gomoneypb/v1/account.proto";
 
 service AccountsService {
   rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {}
+  rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse) {}
 
   rpc ListAccounts(ListAccountsRequest) returns (ListAccountsResponse) {}
+}
+
+message UpdateAccountRequest {
+  int32 id = 1;
+  string name = 2;
+  map<string, string> extra = 3;
+  string type = 4;
+}
+
+message UpdateAccountResponse {
+  gomoneypb.v1.Account account = 1;
 }
 
 message ListAccountsRequest {}

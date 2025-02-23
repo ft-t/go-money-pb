@@ -8,6 +8,98 @@ import { Message, proto3 } from "@bufbuild/protobuf";
 import { Account } from "../../v1/account_pb";
 
 /**
+ * @generated from message gomoneypb.accounts.v1.UpdateAccountRequest
+ */
+export class UpdateAccountRequest extends Message<UpdateAccountRequest> {
+  /**
+   * @generated from field: int32 id = 1;
+   */
+  id = 0;
+
+  /**
+   * @generated from field: string name = 2;
+   */
+  name = "";
+
+  /**
+   * @generated from field: map<string, string> extra = 3;
+   */
+  extra: { [key: string]: string } = {};
+
+  /**
+   * @generated from field: string type = 4;
+   */
+  type = "";
+
+  constructor(data?: PartialMessage<UpdateAccountRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.accounts.v1.UpdateAccountRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "extra", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+    { no: 4, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UpdateAccountRequest {
+    return new UpdateAccountRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UpdateAccountRequest {
+    return new UpdateAccountRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UpdateAccountRequest {
+    return new UpdateAccountRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UpdateAccountRequest | PlainMessage<UpdateAccountRequest> | undefined, b: UpdateAccountRequest | PlainMessage<UpdateAccountRequest> | undefined): boolean {
+    return proto3.util.equals(UpdateAccountRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message gomoneypb.accounts.v1.UpdateAccountResponse
+ */
+export class UpdateAccountResponse extends Message<UpdateAccountResponse> {
+  /**
+   * @generated from field: gomoneypb.v1.Account account = 1;
+   */
+  account?: Account;
+
+  constructor(data?: PartialMessage<UpdateAccountResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.accounts.v1.UpdateAccountResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "account", kind: "message", T: Account },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UpdateAccountResponse {
+    return new UpdateAccountResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UpdateAccountResponse {
+    return new UpdateAccountResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UpdateAccountResponse {
+    return new UpdateAccountResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UpdateAccountResponse | PlainMessage<UpdateAccountResponse> | undefined, b: UpdateAccountResponse | PlainMessage<UpdateAccountResponse> | undefined): boolean {
+    return proto3.util.equals(UpdateAccountResponse, a, b);
+  }
+}
+
+/**
  * @generated from message gomoneypb.accounts.v1.ListAccountsRequest
  */
 export class ListAccountsRequest extends Message<ListAccountsRequest> {
