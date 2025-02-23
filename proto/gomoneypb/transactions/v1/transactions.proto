@@ -19,7 +19,13 @@ message CreateTransactionRequest {
     TransferBetweenAccounts transfer_between_accounts = 4;
     Deposit deposit = 5;
     Withdrawal withdrawal = 6;
+    Reconciliation reconciliation = 8;
   }
+}
+
+message Reconciliation {
+  string diff_amount = 1;
+  int32 source_transaction_id = 2;
 }
 
 message Withdrawal {

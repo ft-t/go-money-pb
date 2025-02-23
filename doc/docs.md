@@ -38,6 +38,7 @@
     - [CreateTransactionRequest.ExtraEntry](#gomoneypb-transactions-v1-CreateTransactionRequest-ExtraEntry)
     - [CreateTransactionResponse](#gomoneypb-transactions-v1-CreateTransactionResponse)
     - [Deposit](#gomoneypb-transactions-v1-Deposit)
+    - [Reconciliation](#gomoneypb-transactions-v1-Reconciliation)
     - [TransferBetweenAccounts](#gomoneypb-transactions-v1-TransferBetweenAccounts)
     - [Withdrawal](#gomoneypb-transactions-v1-Withdrawal)
   
@@ -393,6 +394,8 @@
 | TRANSACTION_TYPE_TRANSFER_BETWEEN_ACCOUNTS | 1 |  |
 | TRANSACTION_TYPE_DEPOSIT | 2 |  |
 | TRANSACTION_TYPE_WITHDRAWAL | 3 |  |
+| TRANSACTION_TYPE_VOID | 4 |  |
+| TRANSACTION_TYPE_RECONCILIATION | 5 |  |
 
 
  
@@ -425,6 +428,7 @@
 | transfer_between_accounts | [TransferBetweenAccounts](#gomoneypb-transactions-v1-TransferBetweenAccounts) |  |  |
 | deposit | [Deposit](#gomoneypb-transactions-v1-Deposit) |  |  |
 | withdrawal | [Withdrawal](#gomoneypb-transactions-v1-Withdrawal) |  |  |
+| reconciliation | [Reconciliation](#gomoneypb-transactions-v1-Reconciliation) |  |  |
 
 
 
@@ -473,6 +477,22 @@
 | destination_amount | [string](#string) |  |  |
 | destination_currency | [string](#string) |  |  |
 | destination_account_id | [int32](#int32) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-transactions-v1-Reconciliation"></a>
+
+### Reconciliation
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| diff_amount | [string](#string) |  |  |
+| source_transaction_id | [int32](#int32) |  |  |
 
 
 

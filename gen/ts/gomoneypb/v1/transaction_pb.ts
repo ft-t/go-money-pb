@@ -29,6 +29,16 @@ export enum TransactionType {
    * @generated from enum value: TRANSACTION_TYPE_WITHDRAWAL = 3;
    */
   WITHDRAWAL = 3,
+
+  /**
+   * @generated from enum value: TRANSACTION_TYPE_VOID = 4;
+   */
+  VOID = 4,
+
+  /**
+   * @generated from enum value: TRANSACTION_TYPE_RECONCILIATION = 5;
+   */
+  RECONCILIATION = 5,
 }
 // Retrieve enum metadata with: proto3.getEnumType(TransactionType)
 proto3.util.setEnumType(TransactionType, "gomoneypb.v1.TransactionType", [
@@ -36,6 +46,8 @@ proto3.util.setEnumType(TransactionType, "gomoneypb.v1.TransactionType", [
   { no: 1, name: "TRANSACTION_TYPE_TRANSFER_BETWEEN_ACCOUNTS" },
   { no: 2, name: "TRANSACTION_TYPE_DEPOSIT" },
   { no: 3, name: "TRANSACTION_TYPE_WITHDRAWAL" },
+  { no: 4, name: "TRANSACTION_TYPE_VOID" },
+  { no: 5, name: "TRANSACTION_TYPE_RECONCILIATION" },
 ]);
 
 /**

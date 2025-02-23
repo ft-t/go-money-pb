@@ -52,6 +52,12 @@ export class CreateTransactionRequest extends Message<CreateTransactionRequest> 
      */
     value: Withdrawal;
     case: "withdrawal";
+  } | {
+    /**
+     * @generated from field: gomoneypb.transactions.v1.Reconciliation reconciliation = 8;
+     */
+    value: Reconciliation;
+    case: "reconciliation";
   } | { case: undefined; value?: undefined } = { case: undefined };
 
   constructor(data?: PartialMessage<CreateTransactionRequest>) {
@@ -69,6 +75,7 @@ export class CreateTransactionRequest extends Message<CreateTransactionRequest> 
     { no: 4, name: "transfer_between_accounts", kind: "message", T: TransferBetweenAccounts, oneof: "transaction" },
     { no: 5, name: "deposit", kind: "message", T: Deposit, oneof: "transaction" },
     { no: 6, name: "withdrawal", kind: "message", T: Withdrawal, oneof: "transaction" },
+    { no: 8, name: "reconciliation", kind: "message", T: Reconciliation, oneof: "transaction" },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreateTransactionRequest {
@@ -85,6 +92,49 @@ export class CreateTransactionRequest extends Message<CreateTransactionRequest> 
 
   static equals(a: CreateTransactionRequest | PlainMessage<CreateTransactionRequest> | undefined, b: CreateTransactionRequest | PlainMessage<CreateTransactionRequest> | undefined): boolean {
     return proto3.util.equals(CreateTransactionRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message gomoneypb.transactions.v1.Reconciliation
+ */
+export class Reconciliation extends Message<Reconciliation> {
+  /**
+   * @generated from field: string diff_amount = 1;
+   */
+  diffAmount = "";
+
+  /**
+   * @generated from field: int32 source_transaction_id = 2;
+   */
+  sourceTransactionId = 0;
+
+  constructor(data?: PartialMessage<Reconciliation>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.transactions.v1.Reconciliation";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "diff_amount", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "source_transaction_id", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Reconciliation {
+    return new Reconciliation().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Reconciliation {
+    return new Reconciliation().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Reconciliation {
+    return new Reconciliation().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: Reconciliation | PlainMessage<Reconciliation> | undefined, b: Reconciliation | PlainMessage<Reconciliation> | undefined): boolean {
+    return proto3.util.equals(Reconciliation, a, b);
   }
 }
 
