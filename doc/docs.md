@@ -21,6 +21,12 @@
   
     - [AccountsService](#gomoneypb-accounts-v1-AccountsService)
   
+- [gomoneypb/configuration/v1/configuration.proto](#gomoneypb_configuration_v1_configuration-proto)
+    - [GetConfigurationRequest](#gomoneypb-configuration-v1-GetConfigurationRequest)
+    - [GetConfigurationResponse](#gomoneypb-configuration-v1-GetConfigurationResponse)
+  
+    - [ConfigurationService](#gomoneypb-configuration-v1-ConfigurationService)
+  
 - [gomoneypb/currency/v1/currency.proto](#gomoneypb_currency_v1_currency-proto)
     - [ExchangeRequest](#gomoneypb-currency-v1-ExchangeRequest)
     - [ExchangeResponse](#gomoneypb-currency-v1-ExchangeResponse)
@@ -45,6 +51,8 @@
     - [TransactionsService](#gomoneypb-transactions-v1-TransactionsService)
   
 - [gomoneypb/users/v1/users.proto](#gomoneypb_users_v1_users-proto)
+    - [CreateRequest](#gomoneypb-users-v1-CreateRequest)
+    - [CreateResponse](#gomoneypb-users-v1-CreateResponse)
     - [LoginRequest](#gomoneypb-users-v1-LoginRequest)
     - [LoginResponse](#gomoneypb-users-v1-LoginResponse)
   
@@ -267,6 +275,57 @@
 | CreateAccount | [CreateAccountRequest](#gomoneypb-accounts-v1-CreateAccountRequest) | [CreateAccountResponse](#gomoneypb-accounts-v1-CreateAccountResponse) |  |
 | UpdateAccount | [UpdateAccountRequest](#gomoneypb-accounts-v1-UpdateAccountRequest) | [UpdateAccountResponse](#gomoneypb-accounts-v1-UpdateAccountResponse) |  |
 | ListAccounts | [ListAccountsRequest](#gomoneypb-accounts-v1-ListAccountsRequest) | [ListAccountsResponse](#gomoneypb-accounts-v1-ListAccountsResponse) |  |
+
+ 
+
+
+
+<a name="gomoneypb_configuration_v1_configuration-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## gomoneypb/configuration/v1/configuration.proto
+
+
+
+<a name="gomoneypb-configuration-v1-GetConfigurationRequest"></a>
+
+### GetConfigurationRequest
+
+
+
+
+
+
+
+<a name="gomoneypb-configuration-v1-GetConfigurationResponse"></a>
+
+### GetConfigurationResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| should_create_admin | [bool](#bool) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="gomoneypb-configuration-v1-ConfigurationService"></a>
+
+### ConfigurationService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetConfiguration | [GetConfigurationRequest](#gomoneypb-configuration-v1-GetConfigurationRequest) | [GetConfigurationResponse](#gomoneypb-configuration-v1-GetConfigurationResponse) |  |
 
  
 
@@ -562,6 +621,37 @@
 
 
 
+<a name="gomoneypb-users-v1-CreateRequest"></a>
+
+### CreateRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| login | [string](#string) |  |  |
+| password | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-users-v1-CreateResponse"></a>
+
+### CreateResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int32](#int32) |  |  |
+
+
+
+
+
+
 <a name="gomoneypb-users-v1-LoginRequest"></a>
 
 ### LoginRequest
@@ -607,6 +697,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Login | [LoginRequest](#gomoneypb-users-v1-LoginRequest) | [LoginResponse](#gomoneypb-users-v1-LoginResponse) |  |
+| Create | [CreateRequest](#gomoneypb-users-v1-CreateRequest) | [CreateResponse](#gomoneypb-users-v1-CreateResponse) |  |
 
  
 

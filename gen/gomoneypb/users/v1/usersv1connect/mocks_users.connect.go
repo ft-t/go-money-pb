@@ -36,6 +36,45 @@ func (m *MockUsersServiceClient) EXPECT() *MockUsersServiceClientMockRecorder {
 	return m.recorder
 }
 
+// Create mocks base method.
+func (m *MockUsersServiceClient) Create(arg0 context.Context, arg1 *connect.Request[v1.CreateRequest]) (*connect.Response[v1.CreateResponse], error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Create", arg0, arg1)
+	ret0, _ := ret[0].(*connect.Response[v1.CreateResponse])
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Create indicates an expected call of Create.
+func (mr *MockUsersServiceClientMockRecorder) Create(arg0, arg1 interface{}) *UsersServiceClientCreateCall {
+	mr.mock.ctrl.T.Helper()
+	call := mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockUsersServiceClient)(nil).Create), arg0, arg1)
+	return &UsersServiceClientCreateCall{Call: call}
+}
+
+// UsersServiceClientCreateCall wrap *gomock.Call
+type UsersServiceClientCreateCall struct {
+	*gomock.Call
+}
+
+// Return rewrite *gomock.Call.Return
+func (c *UsersServiceClientCreateCall) Return(arg0 *connect.Response[v1.CreateResponse], arg1 error) *UsersServiceClientCreateCall {
+	c.Call = c.Call.Return(arg0, arg1)
+	return c
+}
+
+// Do rewrite *gomock.Call.Do
+func (c *UsersServiceClientCreateCall) Do(f func(context.Context, *connect.Request[v1.CreateRequest]) (*connect.Response[v1.CreateResponse], error)) *UsersServiceClientCreateCall {
+	c.Call = c.Call.Do(f)
+	return c
+}
+
+// DoAndReturn rewrite *gomock.Call.DoAndReturn
+func (c *UsersServiceClientCreateCall) DoAndReturn(f func(context.Context, *connect.Request[v1.CreateRequest]) (*connect.Response[v1.CreateResponse], error)) *UsersServiceClientCreateCall {
+	c.Call = c.Call.DoAndReturn(f)
+	return c
+}
+
 // Login mocks base method.
 func (m *MockUsersServiceClient) Login(arg0 context.Context, arg1 *connect.Request[v1.LoginRequest]) (*connect.Response[v1.LoginResponse], error) {
 	m.ctrl.T.Helper()
@@ -96,6 +135,45 @@ func NewMockUsersServiceHandler(ctrl *gomock.Controller) *MockUsersServiceHandle
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockUsersServiceHandler) EXPECT() *MockUsersServiceHandlerMockRecorder {
 	return m.recorder
+}
+
+// Create mocks base method.
+func (m *MockUsersServiceHandler) Create(arg0 context.Context, arg1 *connect.Request[v1.CreateRequest]) (*connect.Response[v1.CreateResponse], error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Create", arg0, arg1)
+	ret0, _ := ret[0].(*connect.Response[v1.CreateResponse])
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Create indicates an expected call of Create.
+func (mr *MockUsersServiceHandlerMockRecorder) Create(arg0, arg1 interface{}) *UsersServiceHandlerCreateCall {
+	mr.mock.ctrl.T.Helper()
+	call := mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockUsersServiceHandler)(nil).Create), arg0, arg1)
+	return &UsersServiceHandlerCreateCall{Call: call}
+}
+
+// UsersServiceHandlerCreateCall wrap *gomock.Call
+type UsersServiceHandlerCreateCall struct {
+	*gomock.Call
+}
+
+// Return rewrite *gomock.Call.Return
+func (c *UsersServiceHandlerCreateCall) Return(arg0 *connect.Response[v1.CreateResponse], arg1 error) *UsersServiceHandlerCreateCall {
+	c.Call = c.Call.Return(arg0, arg1)
+	return c
+}
+
+// Do rewrite *gomock.Call.Do
+func (c *UsersServiceHandlerCreateCall) Do(f func(context.Context, *connect.Request[v1.CreateRequest]) (*connect.Response[v1.CreateResponse], error)) *UsersServiceHandlerCreateCall {
+	c.Call = c.Call.Do(f)
+	return c
+}
+
+// DoAndReturn rewrite *gomock.Call.DoAndReturn
+func (c *UsersServiceHandlerCreateCall) DoAndReturn(f func(context.Context, *connect.Request[v1.CreateRequest]) (*connect.Response[v1.CreateResponse], error)) *UsersServiceHandlerCreateCall {
+	c.Call = c.Call.DoAndReturn(f)
+	return c
 }
 
 // Login mocks base method.

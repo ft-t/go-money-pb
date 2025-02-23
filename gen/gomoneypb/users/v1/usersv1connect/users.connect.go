@@ -35,17 +35,21 @@ const (
 const (
 	// UsersServiceLoginProcedure is the fully-qualified name of the UsersService's Login RPC.
 	UsersServiceLoginProcedure = "/gomoneypb.users.v1.UsersService/Login"
+	// UsersServiceCreateProcedure is the fully-qualified name of the UsersService's Create RPC.
+	UsersServiceCreateProcedure = "/gomoneypb.users.v1.UsersService/Create"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
-	usersServiceServiceDescriptor     = v1.File_gomoneypb_users_v1_users_proto.Services().ByName("UsersService")
-	usersServiceLoginMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("Login")
+	usersServiceServiceDescriptor      = v1.File_gomoneypb_users_v1_users_proto.Services().ByName("UsersService")
+	usersServiceLoginMethodDescriptor  = usersServiceServiceDescriptor.Methods().ByName("Login")
+	usersServiceCreateMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("Create")
 )
 
 // UsersServiceClient is a client for the gomoneypb.users.v1.UsersService service.
 type UsersServiceClient interface {
 	Login(context.Context, *connect.Request[v1.LoginRequest]) (*connect.Response[v1.LoginResponse], error)
+	Create(context.Context, *connect.Request[v1.CreateRequest]) (*connect.Response[v1.CreateResponse], error)
 }
 
 // NewUsersServiceClient constructs a client for the gomoneypb.users.v1.UsersService service. By
@@ -64,12 +68,19 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceLoginMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		create: connect.NewClient[v1.CreateRequest, v1.CreateResponse](
+			httpClient,
+			baseURL+UsersServiceCreateProcedure,
+			connect.WithSchema(usersServiceCreateMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // usersServiceClient implements UsersServiceClient.
 type usersServiceClient struct {
-	login *connect.Client[v1.LoginRequest, v1.LoginResponse]
+	login  *connect.Client[v1.LoginRequest, v1.LoginResponse]
+	create *connect.Client[v1.CreateRequest, v1.CreateResponse]
 }
 
 // Login calls gomoneypb.users.v1.UsersService.Login.
@@ -77,9 +88,15 @@ func (c *usersServiceClient) Login(ctx context.Context, req *connect.Request[v1.
 	return c.login.CallUnary(ctx, req)
 }
 
+// Create calls gomoneypb.users.v1.UsersService.Create.
+func (c *usersServiceClient) Create(ctx context.Context, req *connect.Request[v1.CreateRequest]) (*connect.Response[v1.CreateResponse], error) {
+	return c.create.CallUnary(ctx, req)
+}
+
 // UsersServiceHandler is an implementation of the gomoneypb.users.v1.UsersService service.
 type UsersServiceHandler interface {
 	Login(context.Context, *connect.Request[v1.LoginRequest]) (*connect.Response[v1.LoginResponse], error)
+	Create(context.Context, *connect.Request[v1.CreateRequest]) (*connect.Response[v1.CreateResponse], error)
 }
 
 // NewUsersServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -94,10 +111,18 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceLoginMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	usersServiceCreateHandler := connect.NewUnaryHandler(
+		UsersServiceCreateProcedure,
+		svc.Create,
+		connect.WithSchema(usersServiceCreateMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/gomoneypb.users.v1.UsersService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case UsersServiceLoginProcedure:
 			usersServiceLoginHandler.ServeHTTP(w, r)
+		case UsersServiceCreateProcedure:
+			usersServiceCreateHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -109,4 +134,8 @@ type UnimplementedUsersServiceHandler struct{}
 
 func (UnimplementedUsersServiceHandler) Login(context.Context, *connect.Request[v1.LoginRequest]) (*connect.Response[v1.LoginResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("gomoneypb.users.v1.UsersService.Login is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) Create(context.Context, *connect.Request[v1.CreateRequest]) (*connect.Response[v1.CreateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("gomoneypb.users.v1.UsersService.Create is not implemented"))
 }

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { LoginRequest, LoginResponse } from "./users_pb";
+import { CreateRequest, CreateResponse, LoginRequest, LoginResponse } from "./users_pb";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -19,6 +19,15 @@ export const UsersService = {
       name: "Login",
       I: LoginRequest,
       O: LoginResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc gomoneypb.users.v1.UsersService.Create
+     */
+    create: {
+      name: "Create",
+      I: CreateRequest,
+      O: CreateResponse,
       kind: MethodKind.Unary,
     },
   }
