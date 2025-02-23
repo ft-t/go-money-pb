@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package gomoneypb.currency.v1;
+
+service CurrencyService {
+  rpc Exchange(ExchangeRequest) returns (ExchangeResponse) {}
+}
+
+message ExchangeRequest {
+  string from_currency = 1;
+  string to_currency = 2;
+  string amount = 3;
+}
+
+message ExchangeResponse {
+  string amount = 1;
+}

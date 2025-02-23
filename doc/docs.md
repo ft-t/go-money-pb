@@ -16,11 +16,11 @@
   
     - [AccountsService](#gomoneypb-accounts-v1-AccountsService)
   
-- [gomoneypb/exchange/v1/exchange.proto](#gomoneypb_exchange_v1_exchange-proto)
-    - [ExchangeCurrencyRequest](#gomoneypb-exchange-v1-ExchangeCurrencyRequest)
-    - [ExchangeCurrencyResponse](#gomoneypb-exchange-v1-ExchangeCurrencyResponse)
+- [gomoneypb/currency/v1/currency.proto](#gomoneypb_currency_v1_currency-proto)
+    - [ExchangeRequest](#gomoneypb-currency-v1-ExchangeRequest)
+    - [ExchangeResponse](#gomoneypb-currency-v1-ExchangeResponse)
   
-    - [ExchangeService](#gomoneypb-exchange-v1-ExchangeService)
+    - [CurrencyService](#gomoneypb-currency-v1-CurrencyService)
   
 - [gomoneypb/users/v1/users.proto](#gomoneypb_users_v1_users-proto)
     - [LoginRequest](#gomoneypb-users-v1-LoginRequest)
@@ -47,7 +47,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
+| id | [int32](#int32) |  |  |
 | name | [string](#string) |  |  |
 | currency | [string](#string) |  |  |
 | currency_balance | [string](#string) |  |  |
@@ -183,16 +183,16 @@
 
 
 
-<a name="gomoneypb_exchange_v1_exchange-proto"></a>
+<a name="gomoneypb_currency_v1_currency-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## gomoneypb/exchange/v1/exchange.proto
+## gomoneypb/currency/v1/currency.proto
 
 
 
-<a name="gomoneypb-exchange-v1-ExchangeCurrencyRequest"></a>
+<a name="gomoneypb-currency-v1-ExchangeRequest"></a>
 
-### ExchangeCurrencyRequest
+### ExchangeRequest
 
 
 
@@ -207,9 +207,9 @@
 
 
 
-<a name="gomoneypb-exchange-v1-ExchangeCurrencyResponse"></a>
+<a name="gomoneypb-currency-v1-ExchangeResponse"></a>
 
-### ExchangeCurrencyResponse
+### ExchangeResponse
 
 
 
@@ -228,14 +228,14 @@
  
 
 
-<a name="gomoneypb-exchange-v1-ExchangeService"></a>
+<a name="gomoneypb-currency-v1-CurrencyService"></a>
 
-### ExchangeService
+### CurrencyService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| ExchangeCurrency | [ExchangeCurrencyRequest](#gomoneypb-exchange-v1-ExchangeCurrencyRequest) | [ExchangeCurrencyResponse](#gomoneypb-exchange-v1-ExchangeCurrencyResponse) |  |
+| Exchange | [ExchangeRequest](#gomoneypb-currency-v1-ExchangeRequest) | [ExchangeResponse](#gomoneypb-currency-v1-ExchangeResponse) |  |
 
  
 
