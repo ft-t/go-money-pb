@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { Account } from "../../v1/account_pb";
+import { Account, AccountType } from "../../v1/account_pb";
 
 /**
  * @generated from message gomoneypb.accounts.v1.UpdateAccountRequest
@@ -27,9 +27,14 @@ export class UpdateAccountRequest extends Message<UpdateAccountRequest> {
   extra: { [key: string]: string } = {};
 
   /**
-   * @generated from field: string type = 4;
+   * @generated from field: gomoneypb.v1.AccountType type = 4;
    */
-  type = "";
+  type = AccountType.UNSPECIFIED;
+
+  /**
+   * @generated from field: string note = 5;
+   */
+  note = "";
 
   constructor(data?: PartialMessage<UpdateAccountRequest>) {
     super();
@@ -42,7 +47,8 @@ export class UpdateAccountRequest extends Message<UpdateAccountRequest> {
     { no: 1, name: "id", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "extra", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
-    { no: 4, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "type", kind: "enum", T: proto3.getEnumType(AccountType) },
+    { no: 5, name: "note", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UpdateAccountRequest {

@@ -7,6 +7,44 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 
 /**
+ * @generated from enum gomoneypb.v1.AccountType
+ */
+export enum AccountType {
+  /**
+   * @generated from enum value: ACCOUNT_TYPE_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * @generated from enum value: ACCOUNT_TYPE_REGULAR = 1;
+   */
+  REGULAR = 1,
+
+  /**
+   * @generated from enum value: ACCOUNT_TYPE_SAVINGS = 2;
+   */
+  SAVINGS = 2,
+
+  /**
+   * @generated from enum value: ACCOUNT_TYPE_BROKERAGE = 3;
+   */
+  BROKERAGE = 3,
+
+  /**
+   * @generated from enum value: ACCOUNT_TYPE_LIABILITY = 4;
+   */
+  LIABILITY = 4,
+}
+// Retrieve enum metadata with: proto3.getEnumType(AccountType)
+proto3.util.setEnumType(AccountType, "gomoneypb.v1.AccountType", [
+  { no: 0, name: "ACCOUNT_TYPE_UNSPECIFIED" },
+  { no: 1, name: "ACCOUNT_TYPE_REGULAR" },
+  { no: 2, name: "ACCOUNT_TYPE_SAVINGS" },
+  { no: 3, name: "ACCOUNT_TYPE_BROKERAGE" },
+  { no: 4, name: "ACCOUNT_TYPE_LIABILITY" },
+]);
+
+/**
  * @generated from message gomoneypb.v1.Account
  */
 export class Account extends Message<Account> {
@@ -46,9 +84,14 @@ export class Account extends Message<Account> {
   deletedAt?: Timestamp;
 
   /**
-   * @generated from field: string type = 8;
+   * @generated from field: gomoneypb.v1.AccountType type = 8;
    */
-  type = "";
+  type = AccountType.UNSPECIFIED;
+
+  /**
+   * @generated from field: string note = 9;
+   */
+  note = "";
 
   constructor(data?: PartialMessage<Account>) {
     super();
@@ -65,7 +108,8 @@ export class Account extends Message<Account> {
     { no: 5, name: "extra", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
     { no: 6, name: "updated_at", kind: "message", T: Timestamp },
     { no: 7, name: "deleted_at", kind: "message", T: Timestamp, opt: true },
-    { no: 8, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "type", kind: "enum", T: proto3.getEnumType(AccountType) },
+    { no: 9, name: "note", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Account {

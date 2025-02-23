@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package gomoneypb.transactions.v1;
+
+import "gomoneypb/v1/transaction.proto";
+
+service TransactionsService {
+  rpc CreateTransaction(CreateTransactionRequest) returns (CreateTransactionResponse) {}
+}
+
+message CreateTransactionRequest {
+  string notes = 1;
+  map<string, string> extra = 2;
+  repeated int32 label_ids = 3;
+
+  oneof transaction {
+    TransferBetweenAccounts transfer_between_accounts = 4;
+    Deposit deposit = 5;
+    Withdrawal withdrawal = 6;
+  }
+}
+
+message Withdrawal {
+  string source_amount = 1;
+  string source_currency = 2;
+  int32 source_account_id = 3;
+}
+
+message TransferBetweenAccounts {
+  int32 source_account_id = 1;
+  int32 destination_account_id = 2;
+
+  string source_amount = 3;
+  string destination_amount = 4;
+
+  string source_currency = 5;
+  string destination_currency = 6;
+}
+
+message Deposit {
+  string destination_amount = 1;
+  string destination_currency = 2;
+  int32 destination_account_id = 3;
+}
+
+message CreateTransactionResponse {
+  gomoneypb.v1.Transaction transaction = 1;
+}
