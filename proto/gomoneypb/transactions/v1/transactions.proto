@@ -3,6 +3,7 @@ syntax = "proto3";
 package gomoneypb.transactions.v1;
 
 import "gomoneypb/v1/transaction.proto";
+import "google/protobuf/timestamp.proto";
 
 service TransactionsService {
   rpc CreateTransaction(CreateTransactionRequest) returns (CreateTransactionResponse) {}
@@ -12,6 +13,7 @@ message CreateTransactionRequest {
   string notes = 1;
   map<string, string> extra = 2;
   repeated int32 label_ids = 3;
+  google.protobuf.Timestamp transaction_date = 7;
 
   oneof transaction {
     TransferBetweenAccounts transfer_between_accounts = 4;

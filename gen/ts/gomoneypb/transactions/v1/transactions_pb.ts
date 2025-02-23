@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
+import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 import { Transaction } from "../../v1/transaction_pb";
 
 /**
@@ -25,6 +25,11 @@ export class CreateTransactionRequest extends Message<CreateTransactionRequest> 
    * @generated from field: repeated int32 label_ids = 3;
    */
   labelIds: number[] = [];
+
+  /**
+   * @generated from field: google.protobuf.Timestamp transaction_date = 7;
+   */
+  transactionDate?: Timestamp;
 
   /**
    * @generated from oneof gomoneypb.transactions.v1.CreateTransactionRequest.transaction
@@ -60,6 +65,7 @@ export class CreateTransactionRequest extends Message<CreateTransactionRequest> 
     { no: 1, name: "notes", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "extra", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
     { no: 3, name: "label_ids", kind: "scalar", T: 5 /* ScalarType.INT32 */, repeated: true },
+    { no: 7, name: "transaction_date", kind: "message", T: Timestamp },
     { no: 4, name: "transfer_between_accounts", kind: "message", T: TransferBetweenAccounts, oneof: "transaction" },
     { no: 5, name: "deposit", kind: "message", T: Deposit, oneof: "transaction" },
     { no: 6, name: "withdrawal", kind: "message", T: Withdrawal, oneof: "transaction" },

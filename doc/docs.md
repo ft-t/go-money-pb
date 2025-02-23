@@ -421,6 +421,7 @@
 | notes | [string](#string) |  |  |
 | extra | [CreateTransactionRequest.ExtraEntry](#gomoneypb-transactions-v1-CreateTransactionRequest-ExtraEntry) | repeated |  |
 | label_ids | [int32](#int32) | repeated |  |
+| transaction_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | transfer_between_accounts | [TransferBetweenAccounts](#gomoneypb-transactions-v1-TransferBetweenAccounts) |  |  |
 | deposit | [Deposit](#gomoneypb-transactions-v1-Deposit) |  |  |
 | withdrawal | [Withdrawal](#gomoneypb-transactions-v1-Withdrawal) |  |  |
