@@ -317,11 +317,6 @@ export class CreateAccountRequest extends Message<CreateAccountRequest> {
   currency = "";
 
   /**
-   * @generated from field: string currency_balance = 4;
-   */
-  currencyBalance = "";
-
-  /**
    * @generated from field: map<string, string> extra = 5;
    */
   extra: { [key: string]: string } = {};
@@ -361,7 +356,6 @@ export class CreateAccountRequest extends Message<CreateAccountRequest> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "currency_balance", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "extra", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
     { no: 8, name: "type", kind: "enum", T: proto3.getEnumType(AccountType) },
     { no: 9, name: "note", kind: "scalar", T: 9 /* ScalarType.STRING */ },

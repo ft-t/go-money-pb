@@ -49,9 +49,7 @@ message ListAccountsResponse {
 message CreateAccountRequest {
   string name = 2;
   string currency = 3;
-
-  string currency_balance = 4;
-
+  
   map<string, string> extra = 5;
 
   gomoneypb.v1.AccountType type = 8;

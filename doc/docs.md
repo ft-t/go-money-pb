@@ -155,7 +155,6 @@
 | ----- | ---- | ----- | ----------- |
 | name | [string](#string) |  |  |
 | currency | [string](#string) |  |  |
-| currency_balance | [string](#string) |  |  |
 | extra | [CreateAccountRequest.ExtraEntry](#gomoneypb-accounts-v1-CreateAccountRequest-ExtraEntry) | repeated |  |
 | type | [gomoneypb.v1.AccountType](#gomoneypb-v1-AccountType) |  |  |
 | note | [string](#string) |  |  |
