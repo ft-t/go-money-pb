@@ -39,6 +39,9 @@ const (
 	// AccountsServiceUpdateAccountProcedure is the fully-qualified name of the AccountsService's
 	// UpdateAccount RPC.
 	AccountsServiceUpdateAccountProcedure = "/gomoneypb.accounts.v1.AccountsService/UpdateAccount"
+	// AccountsServiceDeleteAccountProcedure is the fully-qualified name of the AccountsService's
+	// DeleteAccount RPC.
+	AccountsServiceDeleteAccountProcedure = "/gomoneypb.accounts.v1.AccountsService/DeleteAccount"
 	// AccountsServiceListAccountsProcedure is the fully-qualified name of the AccountsService's
 	// ListAccounts RPC.
 	AccountsServiceListAccountsProcedure = "/gomoneypb.accounts.v1.AccountsService/ListAccounts"
@@ -49,6 +52,7 @@ var (
 	accountsServiceServiceDescriptor             = v1.File_gomoneypb_accounts_v1_accounts_proto.Services().ByName("AccountsService")
 	accountsServiceCreateAccountMethodDescriptor = accountsServiceServiceDescriptor.Methods().ByName("CreateAccount")
 	accountsServiceUpdateAccountMethodDescriptor = accountsServiceServiceDescriptor.Methods().ByName("UpdateAccount")
+	accountsServiceDeleteAccountMethodDescriptor = accountsServiceServiceDescriptor.Methods().ByName("DeleteAccount")
 	accountsServiceListAccountsMethodDescriptor  = accountsServiceServiceDescriptor.Methods().ByName("ListAccounts")
 )
 
@@ -56,6 +60,7 @@ var (
 type AccountsServiceClient interface {
 	CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error)
 	UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error)
+	DeleteAccount(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error)
 	ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)
 }
 
@@ -81,6 +86,12 @@ func NewAccountsServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(accountsServiceUpdateAccountMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		deleteAccount: connect.NewClient[v1.DeleteAccountRequest, v1.DeleteAccountResponse](
+			httpClient,
+			baseURL+AccountsServiceDeleteAccountProcedure,
+			connect.WithSchema(accountsServiceDeleteAccountMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		listAccounts: connect.NewClient[v1.ListAccountsRequest, v1.ListAccountsResponse](
 			httpClient,
 			baseURL+AccountsServiceListAccountsProcedure,
@@ -94,6 +105,7 @@ func NewAccountsServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 type accountsServiceClient struct {
 	createAccount *connect.Client[v1.CreateAccountRequest, v1.CreateAccountResponse]
 	updateAccount *connect.Client[v1.UpdateAccountRequest, v1.UpdateAccountResponse]
+	deleteAccount *connect.Client[v1.DeleteAccountRequest, v1.DeleteAccountResponse]
 	listAccounts  *connect.Client[v1.ListAccountsRequest, v1.ListAccountsResponse]
 }
 
@@ -107,6 +119,11 @@ func (c *accountsServiceClient) UpdateAccount(ctx context.Context, req *connect.
 	return c.updateAccount.CallUnary(ctx, req)
 }
 
+// DeleteAccount calls gomoneypb.accounts.v1.AccountsService.DeleteAccount.
+func (c *accountsServiceClient) DeleteAccount(ctx context.Context, req *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error) {
+	return c.deleteAccount.CallUnary(ctx, req)
+}
+
 // ListAccounts calls gomoneypb.accounts.v1.AccountsService.ListAccounts.
 func (c *accountsServiceClient) ListAccounts(ctx context.Context, req *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error) {
 	return c.listAccounts.CallUnary(ctx, req)
@@ -116,6 +133,7 @@ func (c *accountsServiceClient) ListAccounts(ctx context.Context, req *connect.R
 type AccountsServiceHandler interface {
 	CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error)
 	UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error)
+	DeleteAccount(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error)
 	ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)
 }
 
@@ -137,6 +155,12 @@ func NewAccountsServiceHandler(svc AccountsServiceHandler, opts ...connect.Handl
 		connect.WithSchema(accountsServiceUpdateAccountMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	accountsServiceDeleteAccountHandler := connect.NewUnaryHandler(
+		AccountsServiceDeleteAccountProcedure,
+		svc.DeleteAccount,
+		connect.WithSchema(accountsServiceDeleteAccountMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	accountsServiceListAccountsHandler := connect.NewUnaryHandler(
 		AccountsServiceListAccountsProcedure,
 		svc.ListAccounts,
@@ -149,6 +173,8 @@ func NewAccountsServiceHandler(svc AccountsServiceHandler, opts ...connect.Handl
 			accountsServiceCreateAccountHandler.ServeHTTP(w, r)
 		case AccountsServiceUpdateAccountProcedure:
 			accountsServiceUpdateAccountHandler.ServeHTTP(w, r)
+		case AccountsServiceDeleteAccountProcedure:
+			accountsServiceDeleteAccountHandler.ServeHTTP(w, r)
 		case AccountsServiceListAccountsProcedure:
 			accountsServiceListAccountsHandler.ServeHTTP(w, r)
 		default:
@@ -166,6 +192,10 @@ func (UnimplementedAccountsServiceHandler) CreateAccount(context.Context, *conne
 
 func (UnimplementedAccountsServiceHandler) UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("gomoneypb.accounts.v1.AccountsService.UpdateAccount is not implemented"))
+}
+
+func (UnimplementedAccountsServiceHandler) DeleteAccount(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("gomoneypb.accounts.v1.AccountsService.DeleteAccount is not implemented"))
 }
 
 func (UnimplementedAccountsServiceHandler) ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error) {

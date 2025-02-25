@@ -7,8 +7,17 @@ import "gomoneypb/v1/account.proto";
 service AccountsService {
   rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {}
   rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse) {}
+  rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse) {}
 
   rpc ListAccounts(ListAccountsRequest) returns (ListAccountsResponse) {}
+}
+
+message DeleteAccountRequest {
+  int32 id = 1;
+}
+
+message DeleteAccountResponse {
+  gomoneypb.v1.Account account = 1;
 }
 
 message UpdateAccountRequest {
@@ -17,6 +26,7 @@ message UpdateAccountRequest {
   map<string, string> extra = 3;
   gomoneypb.v1.AccountType type = 4;
   string note = 5;
+  optional string liability_percent = 6;
 }
 
 message UpdateAccountResponse {
@@ -34,7 +44,16 @@ message ListAccountsResponse {
 }
 
 message CreateAccountRequest {
-  gomoneypb.v1.Account account = 1;
+  string name = 2;
+  string currency = 3;
+
+  string currency_balance = 4;
+
+  map<string, string> extra = 5;
+
+  gomoneypb.v1.AccountType type = 8;
+  string note = 9;
+  optional string liability_percent = 10;
 }
 
 message CreateAccountResponse {

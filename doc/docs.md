@@ -11,7 +11,10 @@
   
 - [gomoneypb/accounts/v1/accounts.proto](#gomoneypb_accounts_v1_accounts-proto)
     - [CreateAccountRequest](#gomoneypb-accounts-v1-CreateAccountRequest)
+    - [CreateAccountRequest.ExtraEntry](#gomoneypb-accounts-v1-CreateAccountRequest-ExtraEntry)
     - [CreateAccountResponse](#gomoneypb-accounts-v1-CreateAccountResponse)
+    - [DeleteAccountRequest](#gomoneypb-accounts-v1-DeleteAccountRequest)
+    - [DeleteAccountResponse](#gomoneypb-accounts-v1-DeleteAccountResponse)
     - [ListAccountsRequest](#gomoneypb-accounts-v1-ListAccountsRequest)
     - [ListAccountsResponse](#gomoneypb-accounts-v1-ListAccountsResponse)
     - [ListAccountsResponse.AccountItem](#gomoneypb-accounts-v1-ListAccountsResponse-AccountItem)
@@ -86,6 +89,7 @@
 | deleted_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
 | type | [AccountType](#gomoneypb-v1-AccountType) |  |  |
 | note | [string](#string) |  |  |
+| liability_percent | [string](#string) | optional |  |
 
 
 
@@ -147,7 +151,29 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| account | [gomoneypb.v1.Account](#gomoneypb-v1-Account) |  |  |
+| name | [string](#string) |  |  |
+| currency | [string](#string) |  |  |
+| currency_balance | [string](#string) |  |  |
+| extra | [CreateAccountRequest.ExtraEntry](#gomoneypb-accounts-v1-CreateAccountRequest-ExtraEntry) | repeated |  |
+| type | [gomoneypb.v1.AccountType](#gomoneypb-v1-AccountType) |  |  |
+| note | [string](#string) |  |  |
+| liability_percent | [string](#string) | optional |  |
+
+
+
+
+
+
+<a name="gomoneypb-accounts-v1-CreateAccountRequest-ExtraEntry"></a>
+
+### CreateAccountRequest.ExtraEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [string](#string) |  |  |
 
 
 
@@ -157,6 +183,36 @@
 <a name="gomoneypb-accounts-v1-CreateAccountResponse"></a>
 
 ### CreateAccountResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| account | [gomoneypb.v1.Account](#gomoneypb-v1-Account) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-accounts-v1-DeleteAccountRequest"></a>
+
+### DeleteAccountRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int32](#int32) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-accounts-v1-DeleteAccountResponse"></a>
+
+### DeleteAccountResponse
 
 
 
@@ -222,6 +278,7 @@
 | extra | [UpdateAccountRequest.ExtraEntry](#gomoneypb-accounts-v1-UpdateAccountRequest-ExtraEntry) | repeated |  |
 | type | [gomoneypb.v1.AccountType](#gomoneypb-v1-AccountType) |  |  |
 | note | [string](#string) |  |  |
+| liability_percent | [string](#string) | optional |  |
 
 
 
@@ -274,6 +331,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateAccount | [CreateAccountRequest](#gomoneypb-accounts-v1-CreateAccountRequest) | [CreateAccountResponse](#gomoneypb-accounts-v1-CreateAccountResponse) |  |
 | UpdateAccount | [UpdateAccountRequest](#gomoneypb-accounts-v1-UpdateAccountRequest) | [UpdateAccountResponse](#gomoneypb-accounts-v1-UpdateAccountResponse) |  |
+| DeleteAccount | [DeleteAccountRequest](#gomoneypb-accounts-v1-DeleteAccountRequest) | [DeleteAccountResponse](#gomoneypb-accounts-v1-DeleteAccountResponse) |  |
 | ListAccounts | [ListAccountsRequest](#gomoneypb-accounts-v1-ListAccountsRequest) | [ListAccountsResponse](#gomoneypb-accounts-v1-ListAccountsResponse) |  |
 
  

@@ -8,6 +8,80 @@ import { Message, proto3 } from "@bufbuild/protobuf";
 import { Account, AccountType } from "../../v1/account_pb";
 
 /**
+ * @generated from message gomoneypb.accounts.v1.DeleteAccountRequest
+ */
+export class DeleteAccountRequest extends Message<DeleteAccountRequest> {
+  /**
+   * @generated from field: int32 id = 1;
+   */
+  id = 0;
+
+  constructor(data?: PartialMessage<DeleteAccountRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.accounts.v1.DeleteAccountRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DeleteAccountRequest {
+    return new DeleteAccountRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DeleteAccountRequest {
+    return new DeleteAccountRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DeleteAccountRequest {
+    return new DeleteAccountRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: DeleteAccountRequest | PlainMessage<DeleteAccountRequest> | undefined, b: DeleteAccountRequest | PlainMessage<DeleteAccountRequest> | undefined): boolean {
+    return proto3.util.equals(DeleteAccountRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message gomoneypb.accounts.v1.DeleteAccountResponse
+ */
+export class DeleteAccountResponse extends Message<DeleteAccountResponse> {
+  /**
+   * @generated from field: gomoneypb.v1.Account account = 1;
+   */
+  account?: Account;
+
+  constructor(data?: PartialMessage<DeleteAccountResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.accounts.v1.DeleteAccountResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "account", kind: "message", T: Account },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DeleteAccountResponse {
+    return new DeleteAccountResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DeleteAccountResponse {
+    return new DeleteAccountResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DeleteAccountResponse {
+    return new DeleteAccountResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: DeleteAccountResponse | PlainMessage<DeleteAccountResponse> | undefined, b: DeleteAccountResponse | PlainMessage<DeleteAccountResponse> | undefined): boolean {
+    return proto3.util.equals(DeleteAccountResponse, a, b);
+  }
+}
+
+/**
  * @generated from message gomoneypb.accounts.v1.UpdateAccountRequest
  */
 export class UpdateAccountRequest extends Message<UpdateAccountRequest> {
@@ -36,6 +110,11 @@ export class UpdateAccountRequest extends Message<UpdateAccountRequest> {
    */
   note = "";
 
+  /**
+   * @generated from field: optional string liability_percent = 6;
+   */
+  liabilityPercent?: string;
+
   constructor(data?: PartialMessage<UpdateAccountRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -49,6 +128,7 @@ export class UpdateAccountRequest extends Message<UpdateAccountRequest> {
     { no: 3, name: "extra", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
     { no: 4, name: "type", kind: "enum", T: proto3.getEnumType(AccountType) },
     { no: 5, name: "note", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "liability_percent", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UpdateAccountRequest {
@@ -215,9 +295,39 @@ export class ListAccountsResponse_AccountItem extends Message<ListAccountsRespon
  */
 export class CreateAccountRequest extends Message<CreateAccountRequest> {
   /**
-   * @generated from field: gomoneypb.v1.Account account = 1;
+   * @generated from field: string name = 2;
    */
-  account?: Account;
+  name = "";
+
+  /**
+   * @generated from field: string currency = 3;
+   */
+  currency = "";
+
+  /**
+   * @generated from field: string currency_balance = 4;
+   */
+  currencyBalance = "";
+
+  /**
+   * @generated from field: map<string, string> extra = 5;
+   */
+  extra: { [key: string]: string } = {};
+
+  /**
+   * @generated from field: gomoneypb.v1.AccountType type = 8;
+   */
+  type = AccountType.UNSPECIFIED;
+
+  /**
+   * @generated from field: string note = 9;
+   */
+  note = "";
+
+  /**
+   * @generated from field: optional string liability_percent = 10;
+   */
+  liabilityPercent?: string;
 
   constructor(data?: PartialMessage<CreateAccountRequest>) {
     super();
@@ -227,7 +337,13 @@ export class CreateAccountRequest extends Message<CreateAccountRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "gomoneypb.accounts.v1.CreateAccountRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "account", kind: "message", T: Account },
+    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "currency_balance", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "extra", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+    { no: 8, name: "type", kind: "enum", T: proto3.getEnumType(AccountType) },
+    { no: 9, name: "note", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "liability_percent", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreateAccountRequest {

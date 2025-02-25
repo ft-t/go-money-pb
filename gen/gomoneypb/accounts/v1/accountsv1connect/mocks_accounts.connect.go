@@ -75,6 +75,45 @@ func (c *AccountsServiceClientCreateAccountCall) DoAndReturn(f func(context.Cont
 	return c
 }
 
+// DeleteAccount mocks base method.
+func (m *MockAccountsServiceClient) DeleteAccount(arg0 context.Context, arg1 *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteAccount", arg0, arg1)
+	ret0, _ := ret[0].(*connect.Response[v1.DeleteAccountResponse])
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DeleteAccount indicates an expected call of DeleteAccount.
+func (mr *MockAccountsServiceClientMockRecorder) DeleteAccount(arg0, arg1 interface{}) *AccountsServiceClientDeleteAccountCall {
+	mr.mock.ctrl.T.Helper()
+	call := mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteAccount", reflect.TypeOf((*MockAccountsServiceClient)(nil).DeleteAccount), arg0, arg1)
+	return &AccountsServiceClientDeleteAccountCall{Call: call}
+}
+
+// AccountsServiceClientDeleteAccountCall wrap *gomock.Call
+type AccountsServiceClientDeleteAccountCall struct {
+	*gomock.Call
+}
+
+// Return rewrite *gomock.Call.Return
+func (c *AccountsServiceClientDeleteAccountCall) Return(arg0 *connect.Response[v1.DeleteAccountResponse], arg1 error) *AccountsServiceClientDeleteAccountCall {
+	c.Call = c.Call.Return(arg0, arg1)
+	return c
+}
+
+// Do rewrite *gomock.Call.Do
+func (c *AccountsServiceClientDeleteAccountCall) Do(f func(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error)) *AccountsServiceClientDeleteAccountCall {
+	c.Call = c.Call.Do(f)
+	return c
+}
+
+// DoAndReturn rewrite *gomock.Call.DoAndReturn
+func (c *AccountsServiceClientDeleteAccountCall) DoAndReturn(f func(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error)) *AccountsServiceClientDeleteAccountCall {
+	c.Call = c.Call.DoAndReturn(f)
+	return c
+}
+
 // ListAccounts mocks base method.
 func (m *MockAccountsServiceClient) ListAccounts(arg0 context.Context, arg1 *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error) {
 	m.ctrl.T.Helper()
@@ -211,6 +250,45 @@ func (c *AccountsServiceHandlerCreateAccountCall) Do(f func(context.Context, *co
 
 // DoAndReturn rewrite *gomock.Call.DoAndReturn
 func (c *AccountsServiceHandlerCreateAccountCall) DoAndReturn(f func(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error)) *AccountsServiceHandlerCreateAccountCall {
+	c.Call = c.Call.DoAndReturn(f)
+	return c
+}
+
+// DeleteAccount mocks base method.
+func (m *MockAccountsServiceHandler) DeleteAccount(arg0 context.Context, arg1 *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteAccount", arg0, arg1)
+	ret0, _ := ret[0].(*connect.Response[v1.DeleteAccountResponse])
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DeleteAccount indicates an expected call of DeleteAccount.
+func (mr *MockAccountsServiceHandlerMockRecorder) DeleteAccount(arg0, arg1 interface{}) *AccountsServiceHandlerDeleteAccountCall {
+	mr.mock.ctrl.T.Helper()
+	call := mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteAccount", reflect.TypeOf((*MockAccountsServiceHandler)(nil).DeleteAccount), arg0, arg1)
+	return &AccountsServiceHandlerDeleteAccountCall{Call: call}
+}
+
+// AccountsServiceHandlerDeleteAccountCall wrap *gomock.Call
+type AccountsServiceHandlerDeleteAccountCall struct {
+	*gomock.Call
+}
+
+// Return rewrite *gomock.Call.Return
+func (c *AccountsServiceHandlerDeleteAccountCall) Return(arg0 *connect.Response[v1.DeleteAccountResponse], arg1 error) *AccountsServiceHandlerDeleteAccountCall {
+	c.Call = c.Call.Return(arg0, arg1)
+	return c
+}
+
+// Do rewrite *gomock.Call.Do
+func (c *AccountsServiceHandlerDeleteAccountCall) Do(f func(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error)) *AccountsServiceHandlerDeleteAccountCall {
+	c.Call = c.Call.Do(f)
+	return c
+}
+
+// DoAndReturn rewrite *gomock.Call.DoAndReturn
+func (c *AccountsServiceHandlerDeleteAccountCall) DoAndReturn(f func(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error)) *AccountsServiceHandlerDeleteAccountCall {
 	c.Call = c.Call.DoAndReturn(f)
 	return c
 }

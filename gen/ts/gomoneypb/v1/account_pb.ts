@@ -93,6 +93,11 @@ export class Account extends Message<Account> {
    */
   note = "";
 
+  /**
+   * @generated from field: optional string liability_percent = 10;
+   */
+  liabilityPercent?: string;
+
   constructor(data?: PartialMessage<Account>) {
     super();
     proto3.util.initPartial(data, this);
@@ -110,6 +115,7 @@ export class Account extends Message<Account> {
     { no: 7, name: "deleted_at", kind: "message", T: Timestamp, opt: true },
     { no: 8, name: "type", kind: "enum", T: proto3.getEnumType(AccountType) },
     { no: 9, name: "note", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "liability_percent", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Account {

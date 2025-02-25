@@ -18,6 +18,7 @@ message Account {
 
   AccountType type = 8;
   string note = 9;
+  optional string liability_percent = 10;
 }
 
 
