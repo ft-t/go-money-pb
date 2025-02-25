@@ -27,6 +27,9 @@ message UpdateAccountRequest {
   gomoneypb.v1.AccountType type = 4;
   string note = 5;
   optional string liability_percent = 6;
+
+  string iban = 7;
+  string account_number = 8;
 }
 
 message UpdateAccountResponse {
@@ -54,6 +57,9 @@ message CreateAccountRequest {
   gomoneypb.v1.AccountType type = 8;
   string note = 9;
   optional string liability_percent = 10;
+
+  string iban = 11;
+  string account_number = 12;
 }
 
 message CreateAccountResponse {

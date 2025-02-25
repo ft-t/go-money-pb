@@ -90,6 +90,8 @@
 | type | [AccountType](#gomoneypb-v1-AccountType) |  |  |
 | note | [string](#string) |  |  |
 | liability_percent | [string](#string) | optional |  |
+| iban | [string](#string) |  |  |
+| account_number | [string](#string) |  |  |
 
 
 
@@ -158,6 +160,8 @@
 | type | [gomoneypb.v1.AccountType](#gomoneypb-v1-AccountType) |  |  |
 | note | [string](#string) |  |  |
 | liability_percent | [string](#string) | optional |  |
+| iban | [string](#string) |  |  |
+| account_number | [string](#string) |  |  |
 
 
 
@@ -279,6 +283,8 @@
 | type | [gomoneypb.v1.AccountType](#gomoneypb-v1-AccountType) |  |  |
 | note | [string](#string) |  |  |
 | liability_percent | [string](#string) | optional |  |
+| iban | [string](#string) |  |  |
+| account_number | [string](#string) |  |  |
 
 
 

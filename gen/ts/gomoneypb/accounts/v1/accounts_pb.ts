@@ -115,6 +115,16 @@ export class UpdateAccountRequest extends Message<UpdateAccountRequest> {
    */
   liabilityPercent?: string;
 
+  /**
+   * @generated from field: string iban = 7;
+   */
+  iban = "";
+
+  /**
+   * @generated from field: string account_number = 8;
+   */
+  accountNumber = "";
+
   constructor(data?: PartialMessage<UpdateAccountRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -129,6 +139,8 @@ export class UpdateAccountRequest extends Message<UpdateAccountRequest> {
     { no: 4, name: "type", kind: "enum", T: proto3.getEnumType(AccountType) },
     { no: 5, name: "note", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "liability_percent", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 7, name: "iban", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "account_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UpdateAccountRequest {
@@ -329,6 +341,16 @@ export class CreateAccountRequest extends Message<CreateAccountRequest> {
    */
   liabilityPercent?: string;
 
+  /**
+   * @generated from field: string iban = 11;
+   */
+  iban = "";
+
+  /**
+   * @generated from field: string account_number = 12;
+   */
+  accountNumber = "";
+
   constructor(data?: PartialMessage<CreateAccountRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -344,6 +366,8 @@ export class CreateAccountRequest extends Message<CreateAccountRequest> {
     { no: 8, name: "type", kind: "enum", T: proto3.getEnumType(AccountType) },
     { no: 9, name: "note", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "liability_percent", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 11, name: "iban", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 12, name: "account_number", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreateAccountRequest {
