@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ExchangeRequest, ExchangeResponse } from "./currency_pb";
+import { CreateCurrencyRequest, CreateCurrencyResponse, ExchangeRequest, ExchangeResponse, GetCurrenciesRequest, GetCurrenciesResponse, UpdateCurrencyRequest, UpdateCurrencyResponse } from "./currency_pb";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -19,6 +19,33 @@ export const CurrencyService = {
       name: "Exchange",
       I: ExchangeRequest,
       O: ExchangeResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc gomoneypb.currency.v1.CurrencyService.GetCurrencies
+     */
+    getCurrencies: {
+      name: "GetCurrencies",
+      I: GetCurrenciesRequest,
+      O: GetCurrenciesResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc gomoneypb.currency.v1.CurrencyService.CreateCurrency
+     */
+    createCurrency: {
+      name: "CreateCurrency",
+      I: CreateCurrencyRequest,
+      O: CreateCurrencyResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc gomoneypb.currency.v1.CurrencyService.UpdateCurrency
+     */
+    updateCurrency: {
+      name: "UpdateCurrency",
+      I: UpdateCurrencyRequest,
+      O: UpdateCurrencyResponse,
       kind: MethodKind.Unary,
     },
   }

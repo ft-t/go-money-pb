@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package gomoneypb.v1;
+import "google/protobuf/timestamp.proto";
+
+message Currency {
+  string id = 1;
+  string rate = 2;
+  bool is_active = 3;
+  int32 decimal_places = 4;
+
+  google.protobuf.Timestamp updated_at = 5;
+  google.protobuf.Timestamp deleted_at = 6;
+}

@@ -30,9 +30,18 @@
   
     - [ConfigurationService](#gomoneypb-configuration-v1-ConfigurationService)
   
+- [gomoneypb/v1/currency.proto](#gomoneypb_v1_currency-proto)
+    - [Currency](#gomoneypb-v1-Currency)
+  
 - [gomoneypb/currency/v1/currency.proto](#gomoneypb_currency_v1_currency-proto)
+    - [CreateCurrencyRequest](#gomoneypb-currency-v1-CreateCurrencyRequest)
+    - [CreateCurrencyResponse](#gomoneypb-currency-v1-CreateCurrencyResponse)
     - [ExchangeRequest](#gomoneypb-currency-v1-ExchangeRequest)
     - [ExchangeResponse](#gomoneypb-currency-v1-ExchangeResponse)
+    - [GetCurrenciesRequest](#gomoneypb-currency-v1-GetCurrenciesRequest)
+    - [GetCurrenciesResponse](#gomoneypb-currency-v1-GetCurrenciesResponse)
+    - [UpdateCurrencyRequest](#gomoneypb-currency-v1-UpdateCurrencyRequest)
+    - [UpdateCurrencyResponse](#gomoneypb-currency-v1-UpdateCurrencyResponse)
   
     - [CurrencyService](#gomoneypb-currency-v1-CurrencyService)
   
@@ -369,6 +378,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | should_create_admin | [bool](#bool) |  |  |
+| base_currency | [string](#string) |  |  |
 
 
 
@@ -394,10 +404,76 @@
 
 
 
+<a name="gomoneypb_v1_currency-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## gomoneypb/v1/currency.proto
+
+
+
+<a name="gomoneypb-v1-Currency"></a>
+
+### Currency
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| rate | [string](#string) |  |  |
+| is_active | [bool](#bool) |  |  |
+| decimal_places | [int32](#int32) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| deleted_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
 <a name="gomoneypb_currency_v1_currency-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## gomoneypb/currency/v1/currency.proto
+
+
+
+<a name="gomoneypb-currency-v1-CreateCurrencyRequest"></a>
+
+### CreateCurrencyRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| currency | [gomoneypb.v1.Currency](#gomoneypb-v1-Currency) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-currency-v1-CreateCurrencyResponse"></a>
+
+### CreateCurrencyResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| currency | [gomoneypb.v1.Currency](#gomoneypb-v1-Currency) |  |  |
+
+
+
 
 
 
@@ -432,6 +508,61 @@
 
 
 
+
+<a name="gomoneypb-currency-v1-GetCurrenciesRequest"></a>
+
+### GetCurrenciesRequest
+
+
+
+
+
+
+
+<a name="gomoneypb-currency-v1-GetCurrenciesResponse"></a>
+
+### GetCurrenciesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| currencies | [gomoneypb.v1.Currency](#gomoneypb-v1-Currency) | repeated |  |
+
+
+
+
+
+
+<a name="gomoneypb-currency-v1-UpdateCurrencyRequest"></a>
+
+### UpdateCurrencyRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| currency | [gomoneypb.v1.Currency](#gomoneypb-v1-Currency) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-currency-v1-UpdateCurrencyResponse"></a>
+
+### UpdateCurrencyResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| currency | [gomoneypb.v1.Currency](#gomoneypb-v1-Currency) |  |  |
+
+
+
+
+
  
 
  
@@ -447,6 +578,9 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Exchange | [ExchangeRequest](#gomoneypb-currency-v1-ExchangeRequest) | [ExchangeResponse](#gomoneypb-currency-v1-ExchangeResponse) |  |
+| GetCurrencies | [GetCurrenciesRequest](#gomoneypb-currency-v1-GetCurrenciesRequest) | [GetCurrenciesResponse](#gomoneypb-currency-v1-GetCurrenciesResponse) |  |
+| CreateCurrency | [CreateCurrencyRequest](#gomoneypb-currency-v1-CreateCurrencyRequest) | [CreateCurrencyResponse](#gomoneypb-currency-v1-CreateCurrencyResponse) |  |
+| UpdateCurrency | [UpdateCurrencyRequest](#gomoneypb-currency-v1-UpdateCurrencyRequest) | [UpdateCurrencyResponse](#gomoneypb-currency-v1-UpdateCurrencyResponse) |  |
 
  
 

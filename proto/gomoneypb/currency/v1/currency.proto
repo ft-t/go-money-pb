@@ -2,8 +2,38 @@ syntax = "proto3";
 
 package gomoneypb.currency.v1;
 
+import "gomoneypb/v1/currency.proto";
+
 service CurrencyService {
   rpc Exchange(ExchangeRequest) returns (ExchangeResponse) {}
+  rpc GetCurrencies(GetCurrenciesRequest) returns (GetCurrenciesResponse) {}
+
+  rpc CreateCurrency(CreateCurrencyRequest) returns (CreateCurrencyResponse) {}
+  rpc UpdateCurrency(UpdateCurrencyRequest) returns (UpdateCurrencyResponse) {}
+}
+
+message UpdateCurrencyRequest {
+  gomoneypb.v1.Currency currency = 1;
+}
+
+message UpdateCurrencyResponse {
+  gomoneypb.v1.Currency currency = 1;
+}
+
+message CreateCurrencyResponse {
+  gomoneypb.v1.Currency currency = 1;
+}
+
+message CreateCurrencyRequest {
+  gomoneypb.v1.Currency currency = 1;
+}
+
+message GetCurrenciesRequest {
+
+}
+
+message GetCurrenciesResponse {
+  repeated gomoneypb.v1.Currency currencies = 1;
 }
 
 message ExchangeRequest {

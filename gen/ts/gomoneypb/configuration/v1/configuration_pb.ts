@@ -46,6 +46,11 @@ export class GetConfigurationResponse extends Message<GetConfigurationResponse> 
    */
   shouldCreateAdmin = false;
 
+  /**
+   * @generated from field: string base_currency = 2;
+   */
+  baseCurrency = "";
+
   constructor(data?: PartialMessage<GetConfigurationResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -55,6 +60,7 @@ export class GetConfigurationResponse extends Message<GetConfigurationResponse> 
   static readonly typeName = "gomoneypb.configuration.v1.GetConfigurationResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "should_create_admin", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "base_currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetConfigurationResponse {

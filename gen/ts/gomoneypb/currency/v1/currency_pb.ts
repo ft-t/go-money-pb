@@ -5,6 +5,223 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
+import { Currency } from "../../v1/currency_pb";
+
+/**
+ * @generated from message gomoneypb.currency.v1.UpdateCurrencyRequest
+ */
+export class UpdateCurrencyRequest extends Message<UpdateCurrencyRequest> {
+  /**
+   * @generated from field: gomoneypb.v1.Currency currency = 1;
+   */
+  currency?: Currency;
+
+  constructor(data?: PartialMessage<UpdateCurrencyRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.currency.v1.UpdateCurrencyRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "currency", kind: "message", T: Currency },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UpdateCurrencyRequest {
+    return new UpdateCurrencyRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UpdateCurrencyRequest {
+    return new UpdateCurrencyRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UpdateCurrencyRequest {
+    return new UpdateCurrencyRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UpdateCurrencyRequest | PlainMessage<UpdateCurrencyRequest> | undefined, b: UpdateCurrencyRequest | PlainMessage<UpdateCurrencyRequest> | undefined): boolean {
+    return proto3.util.equals(UpdateCurrencyRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message gomoneypb.currency.v1.UpdateCurrencyResponse
+ */
+export class UpdateCurrencyResponse extends Message<UpdateCurrencyResponse> {
+  /**
+   * @generated from field: gomoneypb.v1.Currency currency = 1;
+   */
+  currency?: Currency;
+
+  constructor(data?: PartialMessage<UpdateCurrencyResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.currency.v1.UpdateCurrencyResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "currency", kind: "message", T: Currency },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UpdateCurrencyResponse {
+    return new UpdateCurrencyResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UpdateCurrencyResponse {
+    return new UpdateCurrencyResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UpdateCurrencyResponse {
+    return new UpdateCurrencyResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: UpdateCurrencyResponse | PlainMessage<UpdateCurrencyResponse> | undefined, b: UpdateCurrencyResponse | PlainMessage<UpdateCurrencyResponse> | undefined): boolean {
+    return proto3.util.equals(UpdateCurrencyResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message gomoneypb.currency.v1.CreateCurrencyResponse
+ */
+export class CreateCurrencyResponse extends Message<CreateCurrencyResponse> {
+  /**
+   * @generated from field: gomoneypb.v1.Currency currency = 1;
+   */
+  currency?: Currency;
+
+  constructor(data?: PartialMessage<CreateCurrencyResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.currency.v1.CreateCurrencyResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "currency", kind: "message", T: Currency },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreateCurrencyResponse {
+    return new CreateCurrencyResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CreateCurrencyResponse {
+    return new CreateCurrencyResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CreateCurrencyResponse {
+    return new CreateCurrencyResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: CreateCurrencyResponse | PlainMessage<CreateCurrencyResponse> | undefined, b: CreateCurrencyResponse | PlainMessage<CreateCurrencyResponse> | undefined): boolean {
+    return proto3.util.equals(CreateCurrencyResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message gomoneypb.currency.v1.CreateCurrencyRequest
+ */
+export class CreateCurrencyRequest extends Message<CreateCurrencyRequest> {
+  /**
+   * @generated from field: gomoneypb.v1.Currency currency = 1;
+   */
+  currency?: Currency;
+
+  constructor(data?: PartialMessage<CreateCurrencyRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.currency.v1.CreateCurrencyRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "currency", kind: "message", T: Currency },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreateCurrencyRequest {
+    return new CreateCurrencyRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CreateCurrencyRequest {
+    return new CreateCurrencyRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CreateCurrencyRequest {
+    return new CreateCurrencyRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: CreateCurrencyRequest | PlainMessage<CreateCurrencyRequest> | undefined, b: CreateCurrencyRequest | PlainMessage<CreateCurrencyRequest> | undefined): boolean {
+    return proto3.util.equals(CreateCurrencyRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message gomoneypb.currency.v1.GetCurrenciesRequest
+ */
+export class GetCurrenciesRequest extends Message<GetCurrenciesRequest> {
+  constructor(data?: PartialMessage<GetCurrenciesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.currency.v1.GetCurrenciesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetCurrenciesRequest {
+    return new GetCurrenciesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetCurrenciesRequest {
+    return new GetCurrenciesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetCurrenciesRequest {
+    return new GetCurrenciesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetCurrenciesRequest | PlainMessage<GetCurrenciesRequest> | undefined, b: GetCurrenciesRequest | PlainMessage<GetCurrenciesRequest> | undefined): boolean {
+    return proto3.util.equals(GetCurrenciesRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message gomoneypb.currency.v1.GetCurrenciesResponse
+ */
+export class GetCurrenciesResponse extends Message<GetCurrenciesResponse> {
+  /**
+   * @generated from field: repeated gomoneypb.v1.Currency currencies = 1;
+   */
+  currencies: Currency[] = [];
+
+  constructor(data?: PartialMessage<GetCurrenciesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.currency.v1.GetCurrenciesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "currencies", kind: "message", T: Currency, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetCurrenciesResponse {
+    return new GetCurrenciesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetCurrenciesResponse {
+    return new GetCurrenciesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetCurrenciesResponse {
+    return new GetCurrenciesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetCurrenciesResponse | PlainMessage<GetCurrenciesResponse> | undefined, b: GetCurrenciesResponse | PlainMessage<GetCurrenciesResponse> | undefined): boolean {
+    return proto3.util.equals(GetCurrenciesResponse, a, b);
+  }
+}
 
 /**
  * @generated from message gomoneypb.currency.v1.ExchangeRequest
