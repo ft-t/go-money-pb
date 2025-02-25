@@ -83,7 +83,7 @@
 | id | [int32](#int32) |  |  |
 | name | [string](#string) |  |  |
 | currency | [string](#string) |  |  |
-| currency_balance | [string](#string) |  |  |
+| current_balance | [string](#string) |  |  |
 | extra | [Account.ExtraEntry](#gomoneypb-v1-Account-ExtraEntry) | repeated |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | deleted_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |

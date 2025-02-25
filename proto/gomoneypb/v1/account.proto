@@ -9,7 +9,7 @@ message Account {
   string name = 2;
   string currency = 3;
 
-  string currency_balance = 4;
+  string current_balance = 4;
 
   map<string, string> extra = 5;
 

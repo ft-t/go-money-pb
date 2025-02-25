@@ -64,9 +64,9 @@ export class Account extends Message<Account> {
   currency = "";
 
   /**
-   * @generated from field: string currency_balance = 4;
+   * @generated from field: string current_balance = 4;
    */
-  currencyBalance = "";
+  currentBalance = "";
 
   /**
    * @generated from field: map<string, string> extra = 5;
@@ -119,7 +119,7 @@ export class Account extends Message<Account> {
     { no: 1, name: "id", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "currency", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "currency_balance", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "current_balance", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "extra", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
     { no: 6, name: "updated_at", kind: "message", T: Timestamp },
     { no: 7, name: "deleted_at", kind: "message", T: Timestamp, opt: true },
