@@ -13,7 +13,10 @@ service CurrencyService {
 }
 
 message UpdateCurrencyRequest {
-  gomoneypb.v1.Currency currency = 1;
+  string id = 1;
+  string rate = 2;
+  bool is_active = 3;
+  int32 decimal_places = 4;
 }
 
 message UpdateCurrencyResponse {
@@ -21,7 +24,10 @@ message UpdateCurrencyResponse {
 }
 
 message CreateCurrencyResponse {
-  gomoneypb.v1.Currency currency = 1;
+  string id = 1;
+  string rate = 2;
+  bool is_active = 3;
+  int32 decimal_places = 4;
 }
 
 message CreateCurrencyRequest {

@@ -11,15 +11,15 @@ services:
   breaking:
     image: bufbuild/buf:latest
     container_name: money-buf-breaking
-    entrypoint: /bin/sh
     working_dir: /app
-      - /bin/sh
-      - -c
-      - |
-      git config --global --add safe.directory /app/.git &&
-      buf breaking --against '.git#branch=master'
+    entrypoint: ["/bin/sh", "/app/breaking.sh"]
+    command:
+      - breaking
+      - --against
+      - '.git#branch=master'
     volumes:
       - .:/app
+
   generator:
     image: skydev/proto-gen-b:6.0.0
     container_name: money-proto-gen

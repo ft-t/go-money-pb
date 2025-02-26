@@ -470,7 +470,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| currency | [gomoneypb.v1.Currency](#gomoneypb-v1-Currency) |  |  |
+| id | [string](#string) |  |  |
+| rate | [string](#string) |  |  |
+| is_active | [bool](#bool) |  |  |
+| decimal_places | [int32](#int32) |  |  |
 
 
 
@@ -542,7 +545,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| currency | [gomoneypb.v1.Currency](#gomoneypb-v1-Currency) |  |  |
+| id | [string](#string) |  |  |
+| rate | [string](#string) |  |  |
+| is_active | [bool](#bool) |  |  |
+| decimal_places | [int32](#int32) |  |  |
 
 
 
