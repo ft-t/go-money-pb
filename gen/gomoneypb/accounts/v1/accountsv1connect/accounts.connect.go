@@ -45,15 +45,19 @@ const (
 	// AccountsServiceListAccountsProcedure is the fully-qualified name of the AccountsService's
 	// ListAccounts RPC.
 	AccountsServiceListAccountsProcedure = "/gomoneypb.accounts.v1.AccountsService/ListAccounts"
+	// AccountsServiceReorderAccountsProcedure is the fully-qualified name of the AccountsService's
+	// ReorderAccounts RPC.
+	AccountsServiceReorderAccountsProcedure = "/gomoneypb.accounts.v1.AccountsService/ReorderAccounts"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
-	accountsServiceServiceDescriptor             = v1.File_gomoneypb_accounts_v1_accounts_proto.Services().ByName("AccountsService")
-	accountsServiceCreateAccountMethodDescriptor = accountsServiceServiceDescriptor.Methods().ByName("CreateAccount")
-	accountsServiceUpdateAccountMethodDescriptor = accountsServiceServiceDescriptor.Methods().ByName("UpdateAccount")
-	accountsServiceDeleteAccountMethodDescriptor = accountsServiceServiceDescriptor.Methods().ByName("DeleteAccount")
-	accountsServiceListAccountsMethodDescriptor  = accountsServiceServiceDescriptor.Methods().ByName("ListAccounts")
+	accountsServiceServiceDescriptor               = v1.File_gomoneypb_accounts_v1_accounts_proto.Services().ByName("AccountsService")
+	accountsServiceCreateAccountMethodDescriptor   = accountsServiceServiceDescriptor.Methods().ByName("CreateAccount")
+	accountsServiceUpdateAccountMethodDescriptor   = accountsServiceServiceDescriptor.Methods().ByName("UpdateAccount")
+	accountsServiceDeleteAccountMethodDescriptor   = accountsServiceServiceDescriptor.Methods().ByName("DeleteAccount")
+	accountsServiceListAccountsMethodDescriptor    = accountsServiceServiceDescriptor.Methods().ByName("ListAccounts")
+	accountsServiceReorderAccountsMethodDescriptor = accountsServiceServiceDescriptor.Methods().ByName("ReorderAccounts")
 )
 
 // AccountsServiceClient is a client for the gomoneypb.accounts.v1.AccountsService service.
@@ -62,6 +66,7 @@ type AccountsServiceClient interface {
 	UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error)
 	DeleteAccount(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error)
 	ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)
+	ReorderAccounts(context.Context, *connect.Request[v1.ReorderAccountsRequest]) (*connect.Response[v1.ReorderAccountsResponse], error)
 }
 
 // NewAccountsServiceClient constructs a client for the gomoneypb.accounts.v1.AccountsService
@@ -98,15 +103,22 @@ func NewAccountsServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(accountsServiceListAccountsMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		reorderAccounts: connect.NewClient[v1.ReorderAccountsRequest, v1.ReorderAccountsResponse](
+			httpClient,
+			baseURL+AccountsServiceReorderAccountsProcedure,
+			connect.WithSchema(accountsServiceReorderAccountsMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // accountsServiceClient implements AccountsServiceClient.
 type accountsServiceClient struct {
-	createAccount *connect.Client[v1.CreateAccountRequest, v1.CreateAccountResponse]
-	updateAccount *connect.Client[v1.UpdateAccountRequest, v1.UpdateAccountResponse]
-	deleteAccount *connect.Client[v1.DeleteAccountRequest, v1.DeleteAccountResponse]
-	listAccounts  *connect.Client[v1.ListAccountsRequest, v1.ListAccountsResponse]
+	createAccount   *connect.Client[v1.CreateAccountRequest, v1.CreateAccountResponse]
+	updateAccount   *connect.Client[v1.UpdateAccountRequest, v1.UpdateAccountResponse]
+	deleteAccount   *connect.Client[v1.DeleteAccountRequest, v1.DeleteAccountResponse]
+	listAccounts    *connect.Client[v1.ListAccountsRequest, v1.ListAccountsResponse]
+	reorderAccounts *connect.Client[v1.ReorderAccountsRequest, v1.ReorderAccountsResponse]
 }
 
 // CreateAccount calls gomoneypb.accounts.v1.AccountsService.CreateAccount.
@@ -129,12 +141,18 @@ func (c *accountsServiceClient) ListAccounts(ctx context.Context, req *connect.R
 	return c.listAccounts.CallUnary(ctx, req)
 }
 
+// ReorderAccounts calls gomoneypb.accounts.v1.AccountsService.ReorderAccounts.
+func (c *accountsServiceClient) ReorderAccounts(ctx context.Context, req *connect.Request[v1.ReorderAccountsRequest]) (*connect.Response[v1.ReorderAccountsResponse], error) {
+	return c.reorderAccounts.CallUnary(ctx, req)
+}
+
 // AccountsServiceHandler is an implementation of the gomoneypb.accounts.v1.AccountsService service.
 type AccountsServiceHandler interface {
 	CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error)
 	UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error)
 	DeleteAccount(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error)
 	ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)
+	ReorderAccounts(context.Context, *connect.Request[v1.ReorderAccountsRequest]) (*connect.Response[v1.ReorderAccountsResponse], error)
 }
 
 // NewAccountsServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -167,6 +185,12 @@ func NewAccountsServiceHandler(svc AccountsServiceHandler, opts ...connect.Handl
 		connect.WithSchema(accountsServiceListAccountsMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	accountsServiceReorderAccountsHandler := connect.NewUnaryHandler(
+		AccountsServiceReorderAccountsProcedure,
+		svc.ReorderAccounts,
+		connect.WithSchema(accountsServiceReorderAccountsMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/gomoneypb.accounts.v1.AccountsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case AccountsServiceCreateAccountProcedure:
@@ -177,6 +201,8 @@ func NewAccountsServiceHandler(svc AccountsServiceHandler, opts ...connect.Handl
 			accountsServiceDeleteAccountHandler.ServeHTTP(w, r)
 		case AccountsServiceListAccountsProcedure:
 			accountsServiceListAccountsHandler.ServeHTTP(w, r)
+		case AccountsServiceReorderAccountsProcedure:
+			accountsServiceReorderAccountsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -200,4 +226,8 @@ func (UnimplementedAccountsServiceHandler) DeleteAccount(context.Context, *conne
 
 func (UnimplementedAccountsServiceHandler) ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("gomoneypb.accounts.v1.AccountsService.ListAccounts is not implemented"))
+}
+
+func (UnimplementedAccountsServiceHandler) ReorderAccounts(context.Context, *connect.Request[v1.ReorderAccountsRequest]) (*connect.Response[v1.ReorderAccountsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("gomoneypb.accounts.v1.AccountsService.ReorderAccounts is not implemented"))
 }

@@ -8,6 +8,80 @@ import { Message, proto3 } from "@bufbuild/protobuf";
 import { Currency } from "../../v1/currency_pb";
 
 /**
+ * @generated from message gomoneypb.currency.v1.DeleteCurrencyRequest
+ */
+export class DeleteCurrencyRequest extends Message<DeleteCurrencyRequest> {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id = "";
+
+  constructor(data?: PartialMessage<DeleteCurrencyRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.currency.v1.DeleteCurrencyRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DeleteCurrencyRequest {
+    return new DeleteCurrencyRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DeleteCurrencyRequest {
+    return new DeleteCurrencyRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DeleteCurrencyRequest {
+    return new DeleteCurrencyRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: DeleteCurrencyRequest | PlainMessage<DeleteCurrencyRequest> | undefined, b: DeleteCurrencyRequest | PlainMessage<DeleteCurrencyRequest> | undefined): boolean {
+    return proto3.util.equals(DeleteCurrencyRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message gomoneypb.currency.v1.DeleteCurrencyResponse
+ */
+export class DeleteCurrencyResponse extends Message<DeleteCurrencyResponse> {
+  /**
+   * @generated from field: gomoneypb.v1.Currency currency = 1;
+   */
+  currency?: Currency;
+
+  constructor(data?: PartialMessage<DeleteCurrencyResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.currency.v1.DeleteCurrencyResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "currency", kind: "message", T: Currency },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DeleteCurrencyResponse {
+    return new DeleteCurrencyResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DeleteCurrencyResponse {
+    return new DeleteCurrencyResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DeleteCurrencyResponse {
+    return new DeleteCurrencyResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: DeleteCurrencyResponse | PlainMessage<DeleteCurrencyResponse> | undefined, b: DeleteCurrencyResponse | PlainMessage<DeleteCurrencyResponse> | undefined): boolean {
+    return proto3.util.equals(DeleteCurrencyResponse, a, b);
+  }
+}
+
+/**
  * @generated from message gomoneypb.currency.v1.UpdateCurrencyRequest
  */
 export class UpdateCurrencyRequest extends Message<UpdateCurrencyRequest> {
@@ -104,24 +178,9 @@ export class UpdateCurrencyResponse extends Message<UpdateCurrencyResponse> {
  */
 export class CreateCurrencyResponse extends Message<CreateCurrencyResponse> {
   /**
-   * @generated from field: string id = 1;
+   * @generated from field: gomoneypb.v1.Currency currency = 1;
    */
-  id = "";
-
-  /**
-   * @generated from field: string rate = 2;
-   */
-  rate = "";
-
-  /**
-   * @generated from field: bool is_active = 3;
-   */
-  isActive = false;
-
-  /**
-   * @generated from field: int32 decimal_places = 4;
-   */
-  decimalPlaces = 0;
+  currency?: Currency;
 
   constructor(data?: PartialMessage<CreateCurrencyResponse>) {
     super();
@@ -131,10 +190,7 @@ export class CreateCurrencyResponse extends Message<CreateCurrencyResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "gomoneypb.currency.v1.CreateCurrencyResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "rate", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "is_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 4, name: "decimal_places", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 1, name: "currency", kind: "message", T: Currency },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CreateCurrencyResponse {
@@ -195,6 +251,26 @@ export class CreateCurrencyRequest extends Message<CreateCurrencyRequest> {
  * @generated from message gomoneypb.currency.v1.GetCurrenciesRequest
  */
 export class GetCurrenciesRequest extends Message<GetCurrenciesRequest> {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id = "";
+
+  /**
+   * @generated from field: string rate = 2;
+   */
+  rate = "";
+
+  /**
+   * @generated from field: bool is_active = 3;
+   */
+  isActive = false;
+
+  /**
+   * @generated from field: int32 decimal_places = 4;
+   */
+  decimalPlaces = 0;
+
   constructor(data?: PartialMessage<GetCurrenciesRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -203,6 +279,10 @@ export class GetCurrenciesRequest extends Message<GetCurrenciesRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "gomoneypb.currency.v1.GetCurrenciesRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "rate", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "is_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 4, name: "decimal_places", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetCurrenciesRequest {

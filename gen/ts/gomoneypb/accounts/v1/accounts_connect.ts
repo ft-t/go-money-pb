@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateAccountRequest, CreateAccountResponse, DeleteAccountRequest, DeleteAccountResponse, ListAccountsRequest, ListAccountsResponse, UpdateAccountRequest, UpdateAccountResponse } from "./accounts_pb";
+import { CreateAccountRequest, CreateAccountResponse, DeleteAccountRequest, DeleteAccountResponse, ListAccountsRequest, ListAccountsResponse, ReorderAccountsRequest, ReorderAccountsResponse, UpdateAccountRequest, UpdateAccountResponse } from "./accounts_pb";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -46,6 +46,15 @@ export const AccountsService = {
       name: "ListAccounts",
       I: ListAccountsRequest,
       O: ListAccountsResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc gomoneypb.accounts.v1.AccountsService.ReorderAccounts
+     */
+    reorderAccounts: {
+      name: "ReorderAccounts",
+      I: ReorderAccountsRequest,
+      O: ReorderAccountsResponse,
       kind: MethodKind.Unary,
     },
   }

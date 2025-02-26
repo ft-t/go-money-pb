@@ -45,6 +45,9 @@ const (
 	// CurrencyServiceUpdateCurrencyProcedure is the fully-qualified name of the CurrencyService's
 	// UpdateCurrency RPC.
 	CurrencyServiceUpdateCurrencyProcedure = "/gomoneypb.currency.v1.CurrencyService/UpdateCurrency"
+	// CurrencyServiceDeleteCurrencyProcedure is the fully-qualified name of the CurrencyService's
+	// DeleteCurrency RPC.
+	CurrencyServiceDeleteCurrencyProcedure = "/gomoneypb.currency.v1.CurrencyService/DeleteCurrency"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -54,6 +57,7 @@ var (
 	currencyServiceGetCurrenciesMethodDescriptor  = currencyServiceServiceDescriptor.Methods().ByName("GetCurrencies")
 	currencyServiceCreateCurrencyMethodDescriptor = currencyServiceServiceDescriptor.Methods().ByName("CreateCurrency")
 	currencyServiceUpdateCurrencyMethodDescriptor = currencyServiceServiceDescriptor.Methods().ByName("UpdateCurrency")
+	currencyServiceDeleteCurrencyMethodDescriptor = currencyServiceServiceDescriptor.Methods().ByName("DeleteCurrency")
 )
 
 // CurrencyServiceClient is a client for the gomoneypb.currency.v1.CurrencyService service.
@@ -62,6 +66,7 @@ type CurrencyServiceClient interface {
 	GetCurrencies(context.Context, *connect.Request[v1.GetCurrenciesRequest]) (*connect.Response[v1.GetCurrenciesResponse], error)
 	CreateCurrency(context.Context, *connect.Request[v1.CreateCurrencyRequest]) (*connect.Response[v1.CreateCurrencyResponse], error)
 	UpdateCurrency(context.Context, *connect.Request[v1.UpdateCurrencyRequest]) (*connect.Response[v1.UpdateCurrencyResponse], error)
+	DeleteCurrency(context.Context, *connect.Request[v1.DeleteCurrencyRequest]) (*connect.Response[v1.DeleteCurrencyResponse], error)
 }
 
 // NewCurrencyServiceClient constructs a client for the gomoneypb.currency.v1.CurrencyService
@@ -98,6 +103,12 @@ func NewCurrencyServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(currencyServiceUpdateCurrencyMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		deleteCurrency: connect.NewClient[v1.DeleteCurrencyRequest, v1.DeleteCurrencyResponse](
+			httpClient,
+			baseURL+CurrencyServiceDeleteCurrencyProcedure,
+			connect.WithSchema(currencyServiceDeleteCurrencyMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -107,6 +118,7 @@ type currencyServiceClient struct {
 	getCurrencies  *connect.Client[v1.GetCurrenciesRequest, v1.GetCurrenciesResponse]
 	createCurrency *connect.Client[v1.CreateCurrencyRequest, v1.CreateCurrencyResponse]
 	updateCurrency *connect.Client[v1.UpdateCurrencyRequest, v1.UpdateCurrencyResponse]
+	deleteCurrency *connect.Client[v1.DeleteCurrencyRequest, v1.DeleteCurrencyResponse]
 }
 
 // Exchange calls gomoneypb.currency.v1.CurrencyService.Exchange.
@@ -129,12 +141,18 @@ func (c *currencyServiceClient) UpdateCurrency(ctx context.Context, req *connect
 	return c.updateCurrency.CallUnary(ctx, req)
 }
 
+// DeleteCurrency calls gomoneypb.currency.v1.CurrencyService.DeleteCurrency.
+func (c *currencyServiceClient) DeleteCurrency(ctx context.Context, req *connect.Request[v1.DeleteCurrencyRequest]) (*connect.Response[v1.DeleteCurrencyResponse], error) {
+	return c.deleteCurrency.CallUnary(ctx, req)
+}
+
 // CurrencyServiceHandler is an implementation of the gomoneypb.currency.v1.CurrencyService service.
 type CurrencyServiceHandler interface {
 	Exchange(context.Context, *connect.Request[v1.ExchangeRequest]) (*connect.Response[v1.ExchangeResponse], error)
 	GetCurrencies(context.Context, *connect.Request[v1.GetCurrenciesRequest]) (*connect.Response[v1.GetCurrenciesResponse], error)
 	CreateCurrency(context.Context, *connect.Request[v1.CreateCurrencyRequest]) (*connect.Response[v1.CreateCurrencyResponse], error)
 	UpdateCurrency(context.Context, *connect.Request[v1.UpdateCurrencyRequest]) (*connect.Response[v1.UpdateCurrencyResponse], error)
+	DeleteCurrency(context.Context, *connect.Request[v1.DeleteCurrencyRequest]) (*connect.Response[v1.DeleteCurrencyResponse], error)
 }
 
 // NewCurrencyServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -167,6 +185,12 @@ func NewCurrencyServiceHandler(svc CurrencyServiceHandler, opts ...connect.Handl
 		connect.WithSchema(currencyServiceUpdateCurrencyMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	currencyServiceDeleteCurrencyHandler := connect.NewUnaryHandler(
+		CurrencyServiceDeleteCurrencyProcedure,
+		svc.DeleteCurrency,
+		connect.WithSchema(currencyServiceDeleteCurrencyMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/gomoneypb.currency.v1.CurrencyService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case CurrencyServiceExchangeProcedure:
@@ -177,6 +201,8 @@ func NewCurrencyServiceHandler(svc CurrencyServiceHandler, opts ...connect.Handl
 			currencyServiceCreateCurrencyHandler.ServeHTTP(w, r)
 		case CurrencyServiceUpdateCurrencyProcedure:
 			currencyServiceUpdateCurrencyHandler.ServeHTTP(w, r)
+		case CurrencyServiceDeleteCurrencyProcedure:
+			currencyServiceDeleteCurrencyHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -200,4 +226,8 @@ func (UnimplementedCurrencyServiceHandler) CreateCurrency(context.Context, *conn
 
 func (UnimplementedCurrencyServiceHandler) UpdateCurrency(context.Context, *connect.Request[v1.UpdateCurrencyRequest]) (*connect.Response[v1.UpdateCurrencyResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("gomoneypb.currency.v1.CurrencyService.UpdateCurrency is not implemented"))
+}
+
+func (UnimplementedCurrencyServiceHandler) DeleteCurrency(context.Context, *connect.Request[v1.DeleteCurrencyRequest]) (*connect.Response[v1.DeleteCurrencyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("gomoneypb.currency.v1.CurrencyService.DeleteCurrency is not implemented"))
 }

@@ -10,6 +10,15 @@ service AccountsService {
   rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse) {}
 
   rpc ListAccounts(ListAccountsRequest) returns (ListAccountsResponse) {}
+  rpc ReorderAccounts(ReorderAccountsRequest) returns (ReorderAccountsResponse) {}
+}
+
+message ReorderAccountsRequest {
+  repeated int32 ids = 1;
+}
+
+message ReorderAccountsResponse {
+  repeated gomoneypb.v1.Account accounts = 1;
 }
 
 message DeleteAccountRequest {
@@ -49,7 +58,7 @@ message ListAccountsResponse {
 message CreateAccountRequest {
   string name = 2;
   string currency = 3;
-  
+
   map<string, string> extra = 5;
 
   gomoneypb.v1.AccountType type = 8;

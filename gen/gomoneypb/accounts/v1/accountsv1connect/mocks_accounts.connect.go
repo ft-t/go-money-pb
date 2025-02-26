@@ -153,6 +153,45 @@ func (c *AccountsServiceClientListAccountsCall) DoAndReturn(f func(context.Conte
 	return c
 }
 
+// ReorderAccounts mocks base method.
+func (m *MockAccountsServiceClient) ReorderAccounts(arg0 context.Context, arg1 *connect.Request[v1.ReorderAccountsRequest]) (*connect.Response[v1.ReorderAccountsResponse], error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReorderAccounts", arg0, arg1)
+	ret0, _ := ret[0].(*connect.Response[v1.ReorderAccountsResponse])
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ReorderAccounts indicates an expected call of ReorderAccounts.
+func (mr *MockAccountsServiceClientMockRecorder) ReorderAccounts(arg0, arg1 interface{}) *AccountsServiceClientReorderAccountsCall {
+	mr.mock.ctrl.T.Helper()
+	call := mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReorderAccounts", reflect.TypeOf((*MockAccountsServiceClient)(nil).ReorderAccounts), arg0, arg1)
+	return &AccountsServiceClientReorderAccountsCall{Call: call}
+}
+
+// AccountsServiceClientReorderAccountsCall wrap *gomock.Call
+type AccountsServiceClientReorderAccountsCall struct {
+	*gomock.Call
+}
+
+// Return rewrite *gomock.Call.Return
+func (c *AccountsServiceClientReorderAccountsCall) Return(arg0 *connect.Response[v1.ReorderAccountsResponse], arg1 error) *AccountsServiceClientReorderAccountsCall {
+	c.Call = c.Call.Return(arg0, arg1)
+	return c
+}
+
+// Do rewrite *gomock.Call.Do
+func (c *AccountsServiceClientReorderAccountsCall) Do(f func(context.Context, *connect.Request[v1.ReorderAccountsRequest]) (*connect.Response[v1.ReorderAccountsResponse], error)) *AccountsServiceClientReorderAccountsCall {
+	c.Call = c.Call.Do(f)
+	return c
+}
+
+// DoAndReturn rewrite *gomock.Call.DoAndReturn
+func (c *AccountsServiceClientReorderAccountsCall) DoAndReturn(f func(context.Context, *connect.Request[v1.ReorderAccountsRequest]) (*connect.Response[v1.ReorderAccountsResponse], error)) *AccountsServiceClientReorderAccountsCall {
+	c.Call = c.Call.DoAndReturn(f)
+	return c
+}
+
 // UpdateAccount mocks base method.
 func (m *MockAccountsServiceClient) UpdateAccount(arg0 context.Context, arg1 *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error) {
 	m.ctrl.T.Helper()
@@ -328,6 +367,45 @@ func (c *AccountsServiceHandlerListAccountsCall) Do(f func(context.Context, *con
 
 // DoAndReturn rewrite *gomock.Call.DoAndReturn
 func (c *AccountsServiceHandlerListAccountsCall) DoAndReturn(f func(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)) *AccountsServiceHandlerListAccountsCall {
+	c.Call = c.Call.DoAndReturn(f)
+	return c
+}
+
+// ReorderAccounts mocks base method.
+func (m *MockAccountsServiceHandler) ReorderAccounts(arg0 context.Context, arg1 *connect.Request[v1.ReorderAccountsRequest]) (*connect.Response[v1.ReorderAccountsResponse], error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReorderAccounts", arg0, arg1)
+	ret0, _ := ret[0].(*connect.Response[v1.ReorderAccountsResponse])
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ReorderAccounts indicates an expected call of ReorderAccounts.
+func (mr *MockAccountsServiceHandlerMockRecorder) ReorderAccounts(arg0, arg1 interface{}) *AccountsServiceHandlerReorderAccountsCall {
+	mr.mock.ctrl.T.Helper()
+	call := mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReorderAccounts", reflect.TypeOf((*MockAccountsServiceHandler)(nil).ReorderAccounts), arg0, arg1)
+	return &AccountsServiceHandlerReorderAccountsCall{Call: call}
+}
+
+// AccountsServiceHandlerReorderAccountsCall wrap *gomock.Call
+type AccountsServiceHandlerReorderAccountsCall struct {
+	*gomock.Call
+}
+
+// Return rewrite *gomock.Call.Return
+func (c *AccountsServiceHandlerReorderAccountsCall) Return(arg0 *connect.Response[v1.ReorderAccountsResponse], arg1 error) *AccountsServiceHandlerReorderAccountsCall {
+	c.Call = c.Call.Return(arg0, arg1)
+	return c
+}
+
+// Do rewrite *gomock.Call.Do
+func (c *AccountsServiceHandlerReorderAccountsCall) Do(f func(context.Context, *connect.Request[v1.ReorderAccountsRequest]) (*connect.Response[v1.ReorderAccountsResponse], error)) *AccountsServiceHandlerReorderAccountsCall {
+	c.Call = c.Call.Do(f)
+	return c
+}
+
+// DoAndReturn rewrite *gomock.Call.DoAndReturn
+func (c *AccountsServiceHandlerReorderAccountsCall) DoAndReturn(f func(context.Context, *connect.Request[v1.ReorderAccountsRequest]) (*connect.Response[v1.ReorderAccountsResponse], error)) *AccountsServiceHandlerReorderAccountsCall {
 	c.Call = c.Call.DoAndReturn(f)
 	return c
 }

@@ -75,6 +75,45 @@ func (c *CurrencyServiceClientCreateCurrencyCall) DoAndReturn(f func(context.Con
 	return c
 }
 
+// DeleteCurrency mocks base method.
+func (m *MockCurrencyServiceClient) DeleteCurrency(arg0 context.Context, arg1 *connect.Request[v1.DeleteCurrencyRequest]) (*connect.Response[v1.DeleteCurrencyResponse], error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteCurrency", arg0, arg1)
+	ret0, _ := ret[0].(*connect.Response[v1.DeleteCurrencyResponse])
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DeleteCurrency indicates an expected call of DeleteCurrency.
+func (mr *MockCurrencyServiceClientMockRecorder) DeleteCurrency(arg0, arg1 interface{}) *CurrencyServiceClientDeleteCurrencyCall {
+	mr.mock.ctrl.T.Helper()
+	call := mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteCurrency", reflect.TypeOf((*MockCurrencyServiceClient)(nil).DeleteCurrency), arg0, arg1)
+	return &CurrencyServiceClientDeleteCurrencyCall{Call: call}
+}
+
+// CurrencyServiceClientDeleteCurrencyCall wrap *gomock.Call
+type CurrencyServiceClientDeleteCurrencyCall struct {
+	*gomock.Call
+}
+
+// Return rewrite *gomock.Call.Return
+func (c *CurrencyServiceClientDeleteCurrencyCall) Return(arg0 *connect.Response[v1.DeleteCurrencyResponse], arg1 error) *CurrencyServiceClientDeleteCurrencyCall {
+	c.Call = c.Call.Return(arg0, arg1)
+	return c
+}
+
+// Do rewrite *gomock.Call.Do
+func (c *CurrencyServiceClientDeleteCurrencyCall) Do(f func(context.Context, *connect.Request[v1.DeleteCurrencyRequest]) (*connect.Response[v1.DeleteCurrencyResponse], error)) *CurrencyServiceClientDeleteCurrencyCall {
+	c.Call = c.Call.Do(f)
+	return c
+}
+
+// DoAndReturn rewrite *gomock.Call.DoAndReturn
+func (c *CurrencyServiceClientDeleteCurrencyCall) DoAndReturn(f func(context.Context, *connect.Request[v1.DeleteCurrencyRequest]) (*connect.Response[v1.DeleteCurrencyResponse], error)) *CurrencyServiceClientDeleteCurrencyCall {
+	c.Call = c.Call.DoAndReturn(f)
+	return c
+}
+
 // Exchange mocks base method.
 func (m *MockCurrencyServiceClient) Exchange(arg0 context.Context, arg1 *connect.Request[v1.ExchangeRequest]) (*connect.Response[v1.ExchangeResponse], error) {
 	m.ctrl.T.Helper()
@@ -250,6 +289,45 @@ func (c *CurrencyServiceHandlerCreateCurrencyCall) Do(f func(context.Context, *c
 
 // DoAndReturn rewrite *gomock.Call.DoAndReturn
 func (c *CurrencyServiceHandlerCreateCurrencyCall) DoAndReturn(f func(context.Context, *connect.Request[v1.CreateCurrencyRequest]) (*connect.Response[v1.CreateCurrencyResponse], error)) *CurrencyServiceHandlerCreateCurrencyCall {
+	c.Call = c.Call.DoAndReturn(f)
+	return c
+}
+
+// DeleteCurrency mocks base method.
+func (m *MockCurrencyServiceHandler) DeleteCurrency(arg0 context.Context, arg1 *connect.Request[v1.DeleteCurrencyRequest]) (*connect.Response[v1.DeleteCurrencyResponse], error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteCurrency", arg0, arg1)
+	ret0, _ := ret[0].(*connect.Response[v1.DeleteCurrencyResponse])
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DeleteCurrency indicates an expected call of DeleteCurrency.
+func (mr *MockCurrencyServiceHandlerMockRecorder) DeleteCurrency(arg0, arg1 interface{}) *CurrencyServiceHandlerDeleteCurrencyCall {
+	mr.mock.ctrl.T.Helper()
+	call := mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteCurrency", reflect.TypeOf((*MockCurrencyServiceHandler)(nil).DeleteCurrency), arg0, arg1)
+	return &CurrencyServiceHandlerDeleteCurrencyCall{Call: call}
+}
+
+// CurrencyServiceHandlerDeleteCurrencyCall wrap *gomock.Call
+type CurrencyServiceHandlerDeleteCurrencyCall struct {
+	*gomock.Call
+}
+
+// Return rewrite *gomock.Call.Return
+func (c *CurrencyServiceHandlerDeleteCurrencyCall) Return(arg0 *connect.Response[v1.DeleteCurrencyResponse], arg1 error) *CurrencyServiceHandlerDeleteCurrencyCall {
+	c.Call = c.Call.Return(arg0, arg1)
+	return c
+}
+
+// Do rewrite *gomock.Call.Do
+func (c *CurrencyServiceHandlerDeleteCurrencyCall) Do(f func(context.Context, *connect.Request[v1.DeleteCurrencyRequest]) (*connect.Response[v1.DeleteCurrencyResponse], error)) *CurrencyServiceHandlerDeleteCurrencyCall {
+	c.Call = c.Call.Do(f)
+	return c
+}
+
+// DoAndReturn rewrite *gomock.Call.DoAndReturn
+func (c *CurrencyServiceHandlerDeleteCurrencyCall) DoAndReturn(f func(context.Context, *connect.Request[v1.DeleteCurrencyRequest]) (*connect.Response[v1.DeleteCurrencyResponse], error)) *CurrencyServiceHandlerDeleteCurrencyCall {
 	c.Call = c.Call.DoAndReturn(f)
 	return c
 }

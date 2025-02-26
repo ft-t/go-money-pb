@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateCurrencyRequest, CreateCurrencyResponse, ExchangeRequest, ExchangeResponse, GetCurrenciesRequest, GetCurrenciesResponse, UpdateCurrencyRequest, UpdateCurrencyResponse } from "./currency_pb";
+import { CreateCurrencyRequest, CreateCurrencyResponse, DeleteCurrencyRequest, DeleteCurrencyResponse, ExchangeRequest, ExchangeResponse, GetCurrenciesRequest, GetCurrenciesResponse, UpdateCurrencyRequest, UpdateCurrencyResponse } from "./currency_pb";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -46,6 +46,15 @@ export const CurrencyService = {
       name: "UpdateCurrency",
       I: UpdateCurrencyRequest,
       O: UpdateCurrencyResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc gomoneypb.currency.v1.CurrencyService.DeleteCurrency
+     */
+    deleteCurrency: {
+      name: "DeleteCurrency",
+      I: DeleteCurrencyRequest,
+      O: DeleteCurrencyResponse,
       kind: MethodKind.Unary,
     },
   }

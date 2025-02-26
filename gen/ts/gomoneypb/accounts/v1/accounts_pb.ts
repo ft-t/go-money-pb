@@ -8,6 +8,80 @@ import { Message, proto3 } from "@bufbuild/protobuf";
 import { Account, AccountType } from "../../v1/account_pb";
 
 /**
+ * @generated from message gomoneypb.accounts.v1.ReorderAccountsRequest
+ */
+export class ReorderAccountsRequest extends Message<ReorderAccountsRequest> {
+  /**
+   * @generated from field: repeated int32 ids = 1;
+   */
+  ids: number[] = [];
+
+  constructor(data?: PartialMessage<ReorderAccountsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.accounts.v1.ReorderAccountsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "ids", kind: "scalar", T: 5 /* ScalarType.INT32 */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ReorderAccountsRequest {
+    return new ReorderAccountsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ReorderAccountsRequest {
+    return new ReorderAccountsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ReorderAccountsRequest {
+    return new ReorderAccountsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ReorderAccountsRequest | PlainMessage<ReorderAccountsRequest> | undefined, b: ReorderAccountsRequest | PlainMessage<ReorderAccountsRequest> | undefined): boolean {
+    return proto3.util.equals(ReorderAccountsRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message gomoneypb.accounts.v1.ReorderAccountsResponse
+ */
+export class ReorderAccountsResponse extends Message<ReorderAccountsResponse> {
+  /**
+   * @generated from field: repeated gomoneypb.v1.Account accounts = 1;
+   */
+  accounts: Account[] = [];
+
+  constructor(data?: PartialMessage<ReorderAccountsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "gomoneypb.accounts.v1.ReorderAccountsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "accounts", kind: "message", T: Account, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ReorderAccountsResponse {
+    return new ReorderAccountsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ReorderAccountsResponse {
+    return new ReorderAccountsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ReorderAccountsResponse {
+    return new ReorderAccountsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ReorderAccountsResponse | PlainMessage<ReorderAccountsResponse> | undefined, b: ReorderAccountsResponse | PlainMessage<ReorderAccountsResponse> | undefined): boolean {
+    return proto3.util.equals(ReorderAccountsResponse, a, b);
+  }
+}
+
+/**
  * @generated from message gomoneypb.accounts.v1.DeleteAccountRequest
  */
 export class DeleteAccountRequest extends Message<DeleteAccountRequest> {

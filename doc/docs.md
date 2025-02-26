@@ -18,6 +18,8 @@
     - [ListAccountsRequest](#gomoneypb-accounts-v1-ListAccountsRequest)
     - [ListAccountsResponse](#gomoneypb-accounts-v1-ListAccountsResponse)
     - [ListAccountsResponse.AccountItem](#gomoneypb-accounts-v1-ListAccountsResponse-AccountItem)
+    - [ReorderAccountsRequest](#gomoneypb-accounts-v1-ReorderAccountsRequest)
+    - [ReorderAccountsResponse](#gomoneypb-accounts-v1-ReorderAccountsResponse)
     - [UpdateAccountRequest](#gomoneypb-accounts-v1-UpdateAccountRequest)
     - [UpdateAccountRequest.ExtraEntry](#gomoneypb-accounts-v1-UpdateAccountRequest-ExtraEntry)
     - [UpdateAccountResponse](#gomoneypb-accounts-v1-UpdateAccountResponse)
@@ -36,6 +38,8 @@
 - [gomoneypb/currency/v1/currency.proto](#gomoneypb_currency_v1_currency-proto)
     - [CreateCurrencyRequest](#gomoneypb-currency-v1-CreateCurrencyRequest)
     - [CreateCurrencyResponse](#gomoneypb-currency-v1-CreateCurrencyResponse)
+    - [DeleteCurrencyRequest](#gomoneypb-currency-v1-DeleteCurrencyRequest)
+    - [DeleteCurrencyResponse](#gomoneypb-currency-v1-DeleteCurrencyResponse)
     - [ExchangeRequest](#gomoneypb-currency-v1-ExchangeRequest)
     - [ExchangeResponse](#gomoneypb-currency-v1-ExchangeResponse)
     - [GetCurrenciesRequest](#gomoneypb-currency-v1-GetCurrenciesRequest)
@@ -277,6 +281,36 @@
 
 
 
+<a name="gomoneypb-accounts-v1-ReorderAccountsRequest"></a>
+
+### ReorderAccountsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ids | [int32](#int32) | repeated |  |
+
+
+
+
+
+
+<a name="gomoneypb-accounts-v1-ReorderAccountsResponse"></a>
+
+### ReorderAccountsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| accounts | [gomoneypb.v1.Account](#gomoneypb-v1-Account) | repeated |  |
+
+
+
+
+
+
 <a name="gomoneypb-accounts-v1-UpdateAccountRequest"></a>
 
 ### UpdateAccountRequest
@@ -347,6 +381,7 @@
 | UpdateAccount | [UpdateAccountRequest](#gomoneypb-accounts-v1-UpdateAccountRequest) | [UpdateAccountResponse](#gomoneypb-accounts-v1-UpdateAccountResponse) |  |
 | DeleteAccount | [DeleteAccountRequest](#gomoneypb-accounts-v1-DeleteAccountRequest) | [DeleteAccountResponse](#gomoneypb-accounts-v1-DeleteAccountResponse) |  |
 | ListAccounts | [ListAccountsRequest](#gomoneypb-accounts-v1-ListAccountsRequest) | [ListAccountsResponse](#gomoneypb-accounts-v1-ListAccountsResponse) |  |
+| ReorderAccounts | [ReorderAccountsRequest](#gomoneypb-accounts-v1-ReorderAccountsRequest) | [ReorderAccountsResponse](#gomoneypb-accounts-v1-ReorderAccountsResponse) |  |
 
  
 
@@ -470,10 +505,37 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| currency | [gomoneypb.v1.Currency](#gomoneypb-v1-Currency) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-currency-v1-DeleteCurrencyRequest"></a>
+
+### DeleteCurrencyRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| rate | [string](#string) |  |  |
-| is_active | [bool](#bool) |  |  |
-| decimal_places | [int32](#int32) |  |  |
+
+
+
+
+
+
+<a name="gomoneypb-currency-v1-DeleteCurrencyResponse"></a>
+
+### DeleteCurrencyResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| currency | [gomoneypb.v1.Currency](#gomoneypb-v1-Currency) |  |  |
 
 
 
@@ -516,6 +578,14 @@
 
 ### GetCurrenciesRequest
 
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| rate | [string](#string) |  |  |
+| is_active | [bool](#bool) |  |  |
+| decimal_places | [int32](#int32) |  |  |
 
 
 
@@ -587,6 +657,7 @@
 | GetCurrencies | [GetCurrenciesRequest](#gomoneypb-currency-v1-GetCurrenciesRequest) | [GetCurrenciesResponse](#gomoneypb-currency-v1-GetCurrenciesResponse) |  |
 | CreateCurrency | [CreateCurrencyRequest](#gomoneypb-currency-v1-CreateCurrencyRequest) | [CreateCurrencyResponse](#gomoneypb-currency-v1-CreateCurrencyResponse) |  |
 | UpdateCurrency | [UpdateCurrencyRequest](#gomoneypb-currency-v1-UpdateCurrencyRequest) | [UpdateCurrencyResponse](#gomoneypb-currency-v1-UpdateCurrencyResponse) |  |
+| DeleteCurrency | [DeleteCurrencyRequest](#gomoneypb-currency-v1-DeleteCurrencyRequest) | [DeleteCurrencyResponse](#gomoneypb-currency-v1-DeleteCurrencyResponse) |  |
 
  
 

@@ -10,6 +10,15 @@ service CurrencyService {
 
   rpc CreateCurrency(CreateCurrencyRequest) returns (CreateCurrencyResponse) {}
   rpc UpdateCurrency(UpdateCurrencyRequest) returns (UpdateCurrencyResponse) {}
+  rpc DeleteCurrency(DeleteCurrencyRequest) returns (DeleteCurrencyResponse) {}
+}
+
+message DeleteCurrencyRequest {
+  string id = 1;
+}
+
+message DeleteCurrencyResponse {
+  gomoneypb.v1.Currency currency = 1;
 }
 
 message UpdateCurrencyRequest {
@@ -24,10 +33,7 @@ message UpdateCurrencyResponse {
 }
 
 message CreateCurrencyResponse {
-  string id = 1;
-  string rate = 2;
-  bool is_active = 3;
-  int32 decimal_places = 4;
+  gomoneypb.v1.Currency currency = 1;
 }
 
 message CreateCurrencyRequest {
@@ -35,7 +41,10 @@ message CreateCurrencyRequest {
 }
 
 message GetCurrenciesRequest {
-
+  string id = 1;
+  string rate = 2;
+  bool is_active = 3;
+  int32 decimal_places = 4;
 }
 
 message GetCurrenciesResponse {
