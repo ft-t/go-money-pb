@@ -6,9 +6,7 @@ service ConfigurationService {
   rpc GetConfiguration(GetConfigurationRequest) returns (GetConfigurationResponse) {}
 }
 
-message GetConfigurationRequest {
-
-}
+message GetConfigurationRequest {}
 
 message GetConfigurationResponse {
   bool should_create_admin = 1;

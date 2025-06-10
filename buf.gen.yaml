@@ -1,25 +1,9 @@
-
-version: v1
+version: v2
 managed:
   enabled: true
-  go_package_prefix:
-    default: github.com/ft-t/go-money-pb/gen
-    except:
-      - buf.build/googleapis/googleapis
+  override:
+    - file_option: go_package_prefix
+      value: github.com/ft-t/go-money-pb
 plugins:
-  - name: go
-    out: gen
-    opt: paths=source_relative
-  - name: connect-go
-    out: gen
-    opt: paths=source_relative
-  - name: doc
-    out: doc
-    opt: markdown,docs.md
-    strategy: all
-  - name: es
-    opt: target=ts,import_extension=none
-    out: gen/ts
-  - name: connect-es
-    opt: target=ts,import_extension=none
-    out: gen/ts
+  - remote: buf.build/protocolbuffers/go
+    out: gen/proto

@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package gomoneypb.v1;
+
 import "google/protobuf/timestamp.proto";
 
 message Account {
@@ -22,7 +23,6 @@ message Account {
   string iban = 11;
   string account_number = 12;
 }
-
 
 enum AccountType {
   ACCOUNT_TYPE_UNSPECIFIED = 0;
