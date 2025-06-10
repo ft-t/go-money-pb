@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package gomoneypb.v1;
+import "google/protobuf/timestamp.proto";
+
+message Transaction {
+  int64 id = 1;
+
+  optional string source_amount = 2;
+  optional string source_currency = 3;
+
+  optional string destination_amount = 4;
+  optional string destination_currency = 5;
+
+  optional int32 source_account_id = 6;
+  optional int32 destination_account_id = 7;
+
+  repeated int32 label_ids = 8;
+
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+  google.protobuf.Timestamp transaction_date = 11;
+
+  TransactionType type = 12;
+
+  string notes = 13;
+  map<string, string> extra = 14;
+}
+
+enum TransactionType {
+  TRANSACTION_TYPE_UNSPECIFIED = 0;
+  TRANSACTION_TYPE_TRANSFER_BETWEEN_ACCOUNTS = 1;
+  TRANSACTION_TYPE_DEPOSIT = 2;
+  TRANSACTION_TYPE_WITHDRAWAL = 3;
+  TRANSACTION_TYPE_VOID = 4;
+  TRANSACTION_TYPE_RECONCILIATION = 5;
+}
