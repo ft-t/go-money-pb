@@ -52,7 +52,7 @@ message ListAccountsResponse {
     gomoneypb.v1.Account account = 1;
   }
 
-  repeated  AccountItem accounts = 1;
+  repeated AccountItem accounts = 1;
 }
 
 message CreateAccountRequest {
