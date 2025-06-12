@@ -41,10 +41,8 @@ message CreateCurrencyRequest {
 }
 
 message GetCurrenciesRequest {
-  string id = 1;
-  string rate = 2;
-  bool is_active = 3;
-  int32 decimal_places = 4;
+  repeated string ids = 1;
+  bool include_deleted = 2;
 }
 
 message GetCurrenciesResponse {

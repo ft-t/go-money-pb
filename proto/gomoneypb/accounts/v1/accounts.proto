@@ -45,7 +45,10 @@ message UpdateAccountResponse {
   gomoneypb.v1.Account account = 1;
 }
 
-message ListAccountsRequest {}
+message ListAccountsRequest {
+  repeated int32 ids = 1;
+  bool include_deleted = 2;
+}
 
 message ListAccountsResponse {
   message AccountItem {
