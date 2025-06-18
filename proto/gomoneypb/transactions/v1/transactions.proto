@@ -21,7 +21,7 @@ message ListTransactionsRequest {
   repeated int32 destination_account_ids = 7;
   repeated int32 any_account_ids = 8;
 
-  int32 page = 9;
+  int32 skip = 9;
   int32 limit = 10;
 
   repeated int32 label_ids = 11;
