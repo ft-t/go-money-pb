@@ -56,6 +56,9 @@ message Withdrawal {
   string source_amount = 1;
   string source_currency = 2;
   int32 source_account_id = 3;
+
+  optional string foreign_amount = 4;
+  optional string foreign_currency = 5;
 }
 
 message TransferBetweenAccounts {
