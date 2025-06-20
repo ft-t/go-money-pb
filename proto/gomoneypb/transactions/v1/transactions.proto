@@ -48,8 +48,9 @@ message CreateTransactionRequest {
 }
 
 message Reconciliation {
-  string diff_amount = 1;
-  int32 source_transaction_id = 2;
+  string destination_amount = 1;
+  string destination_currency = 2;
+  int32 destination_account_id = 3;
 }
 
 message Withdrawal {
