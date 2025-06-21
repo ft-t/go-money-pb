@@ -62,7 +62,6 @@ message ListAccountsResponse {
 
 message CreateAccountsBulkRequest {
   repeated CreateAccountRequest accounts = 1;
-  bool ignore_duplicates = 2;
 }
 
 message CreateAccountsBulkResponse {
@@ -81,6 +80,8 @@ message CreateAccountRequest {
 
   string iban = 11;
   string account_number = 12;
+
+  optional int32 position = 13;
 }
 
 message CreateAccountResponse {
