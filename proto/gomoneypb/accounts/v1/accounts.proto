@@ -6,6 +6,8 @@ import "gomoneypb/v1/account.proto";
 
 service AccountsService {
   rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {}
+  rpc CreateAccountsBulk(CreateAccountsBulkRequest) returns (CreateAccountsBulkResponse) {}
+
   rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse) {}
   rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse) {}
 
@@ -56,6 +58,15 @@ message ListAccountsResponse {
   }
 
   repeated AccountItem accounts = 1;
+}
+
+message CreateAccountsBulkRequest {
+  repeated CreateAccountRequest accounts = 1;
+  bool ignore_duplicates = 2;
+}
+
+message CreateAccountsBulkResponse {
+  repeated string messages = 1;
 }
 
 message CreateAccountRequest {
