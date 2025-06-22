@@ -3,14 +3,21 @@ syntax = "proto3";
 package gomoneypb.import.v1;
 
 service ImportService {
-  rpc FireflyImport(FireflyImportRequest) returns (FireflyImportResponse) {}
+  rpc ImportTransactions(ImportTransactionsRequest) returns (ImportTransactionsResponse) {}
 }
 
-message FireflyImportRequest {
+message ImportTransactionsRequest {
   string file_content = 1; // base64 encoded content of the Firefly file
+  ImportSource source = 2;
 }
 
-message FireflyImportResponse {
+message ImportTransactionsResponse {
   int32 imported_count = 1;
   int32 duplicate_count = 2;
+}
+
+
+enum ImportSource {
+  IMPORT_SOURCE_UNSPECIFIED = 0;
+  IMPORT_SOURCE_FIREFLY = 1;
 }
