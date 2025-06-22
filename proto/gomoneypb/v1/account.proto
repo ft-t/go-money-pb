@@ -22,6 +22,7 @@ message Account {
   optional string liability_percent = 10;
   string iban = 11;
   string account_number = 12;
+  optional int32 display_order = 13;
 }
 
 enum AccountType {
