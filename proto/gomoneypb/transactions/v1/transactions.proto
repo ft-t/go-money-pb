@@ -38,6 +38,8 @@ message CreateTransactionRequest {
   repeated int32 label_ids = 3;
   google.protobuf.Timestamp transaction_date = 7;
   string title = 9;
+  optional string reference_number = 10;
+  optional string internal_reference_number = 11;
 
   oneof transaction {
     TransferBetweenAccounts transfer_between_accounts = 4;
