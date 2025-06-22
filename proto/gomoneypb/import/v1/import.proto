@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package gomoneypb.import.v1;
+
+service ImportService {
+  rpc FireflyImport(FireflyImportRequest) returns (FireflyImportResponse) {}
+}
+
+message FireflyImportRequest {
+  string file_content = 1; // base64 encoded content of the Firefly file
+}
+
+message FireflyImportResponse {
+  int32 imported_count = 1;
+  int32 duplicate_count = 2;
+}

@@ -66,6 +66,8 @@ message CreateAccountsBulkRequest {
 
 message CreateAccountsBulkResponse {
   repeated string messages = 1;
+  int32 created_count = 2;
+  int32 duplicate_count = 3;
 }
 
 message CreateAccountRequest {
