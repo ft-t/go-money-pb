@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package gomoneypb.labels.v1;
+
+import "gomoneypb/v1/label.proto";
+
+service LabelsService {
+  rpc CreateLabel(CreateLabelRequest) returns (CreateLabelResponse) {}
+  rpc UpdateLabel(UpdateLabelRequest) returns (UpdateLabelResponse) {}
+  rpc DeleteLabel(DeleteLabelRequest) returns (DeleteLabelResponse) {}
+  rpc ListLabels(ListLabelsRequest) returns (ListLabelsResponse) {}
+}
+
+message CreateLabelRequest {
+  string name = 1;
+  string color = 2;
+  string icon = 3;
+}
+
+message CreateLabelResponse {
+  gomoneypb.v1.Label label = 1;
+}
+
+message UpdateLabelRequest {
+  int32 id = 1;
+  string name = 2;
+  string color = 3;
+  string icon = 4;
+}
+
+message UpdateLabelResponse {
+  gomoneypb.v1.Label label = 1;
+}
+
+message DeleteLabelRequest {
+  int32 id = 1;
+}
+
+message DeleteLabelResponse {
+  gomoneypb.v1.Label label = 1;
+}
+
+message ListLabelsRequest {
+  repeated int32 ids = 1;
+  bool include_deleted = 2;
+  optional string name = 3;
+}
+
+message ListLabelsResponse {
+  message LabelItem {
+    gomoneypb.v1.Label label = 1;
+  }
+
+  repeated LabelItem labels = 1;
+}
