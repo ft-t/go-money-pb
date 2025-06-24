@@ -41,6 +41,7 @@ message UpdateAccountRequest {
 
   string iban = 7;
   string account_number = 8;
+  optional int32 display_order = 9;
 }
 
 message UpdateAccountResponse {
