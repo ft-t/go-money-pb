@@ -25,6 +25,18 @@ message ListTransactionsRequest {
   int32 limit = 10;
 
   repeated int32 label_ids = 11;
+  repeated gomoneypb.v1.TransactionType transaction_types = 12;
+
+  repeated Sort sort = 13;
+  message Sort {
+    SortField field = 1;
+    bool ascending = 2;
+  }
+}
+
+enum SortField {
+  SORT_FIELD_UNSPECIFIED = 0;
+  SORT_FIELD_TRANSACTION_DATE = 1;
 }
 
 message ListTransactionsResponse {
