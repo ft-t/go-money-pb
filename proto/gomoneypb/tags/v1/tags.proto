@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package gomoneypb.tags.v1;
+
+import "gomoneypb/v1/tag.proto";
+
+service TagsService {
+  rpc CreateTag(CreateTagRequest) returns (CreateTagResponse) {}
+  rpc UpdateTag(UpdateTagRequest) returns (UpdateTagResponse) {}
+  rpc DeleteTag(DeleteTagRequest) returns (DeleteTagResponse) {}
+  rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {}
+}
+
+message CreateTagRequest {
+  string name = 1;
+  string color = 2;
+  string icon = 3;
+}
+
+message CreateTagResponse {
+  gomoneypb.v1.Tag tag = 1;
+}
+
+message UpdateTagRequest {
+  int32 id = 1;
+  string name = 2;
+  string color = 3;
+  string icon = 4;
+}
+
+message UpdateTagResponse {
+  gomoneypb.v1.Tag tag = 1;
+}
+
+message DeleteTagRequest {
+  int32 id = 1;
+}
+
+message DeleteTagResponse {
+  gomoneypb.v1.Tag tag = 1;
+}
+
+message ListTagsRequest {
+  repeated int32 ids = 1;
+  bool include_deleted = 2;
+  optional string name = 3;
+}
+
+message ListTagsResponse {
+  message TagItem {
+    gomoneypb.v1.Tag tag = 1;
+  }
+
+  repeated TagItem tags = 1;
+}

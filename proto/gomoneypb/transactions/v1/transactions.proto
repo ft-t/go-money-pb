@@ -24,7 +24,7 @@ message ListTransactionsRequest {
   int32 skip = 9;
   int32 limit = 10;
 
-  repeated int32 label_ids = 11;
+  repeated int32 tag_ids = 11;
   repeated gomoneypb.v1.TransactionType transaction_types = 12;
 
   repeated Sort sort = 13;
@@ -47,7 +47,7 @@ message ListTransactionsResponse {
 message CreateTransactionRequest {
   string notes = 1;
   map<string, string> extra = 2;
-  repeated int32 label_ids = 3;
+  repeated int32 tag_ids = 3;
   google.protobuf.Timestamp transaction_date = 7;
   string title = 9;
   optional string reference_number = 10;

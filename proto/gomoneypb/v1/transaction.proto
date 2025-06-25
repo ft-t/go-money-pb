@@ -16,7 +16,7 @@ message Transaction {
   optional int32 source_account_id = 6;
   optional int32 destination_account_id = 7;
 
-  repeated int32 label_ids = 8;
+  repeated int32 tag_ids = 8;
 
   google.protobuf.Timestamp created_at = 9;
   google.protobuf.Timestamp updated_at = 10;
