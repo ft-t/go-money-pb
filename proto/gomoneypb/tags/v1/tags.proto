@@ -6,10 +6,23 @@ import "gomoneypb/v1/tag.proto";
 
 service TagsService {
   rpc CreateTag(CreateTagRequest) returns (CreateTagResponse) {}
+  rpc ImportTags(ImportTagsRequest) returns (ImportTagsResponse) {}
+
   rpc UpdateTag(UpdateTagRequest) returns (UpdateTagResponse) {}
   rpc DeleteTag(DeleteTagRequest) returns (DeleteTagResponse) {}
   rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {}
 }
+
+message ImportTagsRequest {
+  repeated CreateTagRequest tags = 1;
+}
+
+message ImportTagsResponse {
+  repeated string messages = 1;
+  int32 created_count = 2;
+  int32 updated_count = 3;
+}
+
 
 message CreateTagRequest {
   string name = 1;
