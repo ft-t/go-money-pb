@@ -14,7 +14,7 @@ service TagsService {
 }
 
 message ImportTagsRequest {
-  repeated CreateTagRequest tags = 1;
+  repeated UpdateTagRequest tags = 1;
 }
 
 message ImportTagsResponse {
