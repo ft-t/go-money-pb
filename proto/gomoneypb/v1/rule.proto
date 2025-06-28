@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package gomoneypb.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Rule {
+  int32 id = 1;
+
+  string title = 2;
+  string script = 3;
+
+  RuleInterpreterType interpreter = 4;
+  int32 sort_order = 5;
+
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+
+  bool enabled = 8;
+  bool is_final_rule = 9;
+
+  optional google.protobuf.Timestamp deleted_at = 10;
+  string group_name = 11;
+}
+
+enum RuleInterpreterType {
+  RULE_INTERPRETER_TYPE_UNSPECIFIED = 0;
+  RULE_INTERPRETER_TYPE_LUA = 1;
+}

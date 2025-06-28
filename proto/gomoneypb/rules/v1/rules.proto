@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package gomoneypb.rules.v1;
+
+import "gomoneypb/v1/rule.proto";
+import "gomoneypb/v1/transaction.proto";
+
+service RulesService {
+  rpc ListRules(ListRulesRequest) returns (ListRulesResponse) {}
+
+  rpc CreateRule(CreateRuleRequest) returns (CreateRuleResponse) {}
+  rpc UpdateRule(UpdateRuleRequest) returns (UpdateRuleResponse) {}
+  rpc DeleteRule(DeleteRuleRequest) returns (DeleteRuleResponse) {}
+
+  rpc DryRunRule(DryRunRuleRequest) returns (DryRunRuleResponse) {}
+}
+
+message DryRunRuleRequest {
+  gomoneypb.v1.Rule rule = 1;
+  repeated int64 transaction_ids = 2;
+}
+
+message DryRunRuleResponse {
+  repeated gomoneypb.v1.Transaction updated_transactions = 1;
+}
+
+message DeleteRuleRequest {
+  int32 id = 1;
+}
+
+message DeleteRuleResponse {
+  gomoneypb.v1.Rule rule = 1;
+}
+
+message UpdateRuleRequest {
+  gomoneypb.v1.Rule rule = 2;
+}
+
+message UpdateRuleResponse {
+  gomoneypb.v1.Rule rule = 1;
+}
+
+message CreateRuleRequest {
+  gomoneypb.v1.Rule rule = 1;
+}
+
+message CreateRuleResponse {
+  gomoneypb.v1.Rule rule = 1;
+}
+
+
+message ListRulesRequest {
+  repeated int32 ids = 1;
+  bool include_deleted = 2;
+}
+
+message ListRulesResponse {
+  repeated gomoneypb.v1.Rule rules = 1;
+}
