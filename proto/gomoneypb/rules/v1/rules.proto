@@ -17,11 +17,13 @@ service RulesService {
 
 message DryRunRuleRequest {
   gomoneypb.v1.Rule rule = 1;
-  repeated int64 transaction_ids = 2;
+  int64 transaction_id = 2;
 }
 
 message DryRunRuleResponse {
-  repeated gomoneypb.v1.Transaction updated_transactions = 1;
+  gomoneypb.v1.Transaction before = 1;
+  gomoneypb.v1.Transaction after = 2;
+  bool rule_applied = 3;
 }
 
 message DeleteRuleRequest {
