@@ -9,6 +9,7 @@ service ImportService {
 message ImportTransactionsRequest {
   string file_content = 1; // base64 encoded content of the Firefly file
   ImportSource source = 2;
+  bool skip_rules = 3;
 }
 
 message ImportTransactionsResponse {

@@ -7,7 +7,19 @@ import "google/protobuf/timestamp.proto";
 
 service TransactionsService {
   rpc CreateTransaction(CreateTransactionRequest) returns (CreateTransactionResponse) {}
+  rpc UpdateTransaction(UpdateTransactionRequest) returns (UpdateTransactionResponse) {}
+  
   rpc ListTransactions(ListTransactionsRequest) returns (ListTransactionsResponse) {}
+}
+
+message UpdateTransactionRequest {
+  int64 id = 1;
+  
+  CreateTransactionRequest transaction = 2;
+}
+
+message UpdateTransactionResponse {
+  gomoneypb.v1.Transaction transaction = 1;
 }
 
 message ListTransactionsRequest {
@@ -28,6 +40,7 @@ message ListTransactionsRequest {
   repeated gomoneypb.v1.TransactionType transaction_types = 12;
 
   repeated Sort sort = 13;
+  
   message Sort {
     SortField field = 1;
     bool ascending = 2;
@@ -52,6 +65,8 @@ message CreateTransactionRequest {
   string title = 9;
   optional string reference_number = 10;
   optional string internal_reference_number = 11;
+
+  bool skip_rules = 12;
 
   oneof transaction {
     TransferBetweenAccounts transfer_between_accounts = 4;
