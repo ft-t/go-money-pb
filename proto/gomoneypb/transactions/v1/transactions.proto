@@ -45,6 +45,8 @@ message ListTransactionsRequest {
     SortField field = 1;
     bool ascending = 2;
   }
+  
+  repeated int32 ids = 14;
 }
 
 enum SortField {
