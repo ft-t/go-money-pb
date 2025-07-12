@@ -4,12 +4,10 @@ package gomoneypb.v1;
 
 import "google/protobuf/timestamp.proto";
 
-message Tag {
+message Category {
   int32 id = 1;
 
   string name = 2;
-  string color = 3;
-  string icon = 4;
 
-  google.protobuf.Timestamp deleted_at = 5;
+  google.protobuf.Timestamp deleted_at = 3;
 }

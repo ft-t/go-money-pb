@@ -31,6 +31,8 @@ message Transaction {
   optional string reference_number = 16;
   optional string internal_reference_number = 17;
   optional int32 display_order = 18;
+
+  optional int32 category_id = 19;
 }
 
 enum TransactionType {

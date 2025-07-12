@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package gomoneypb.categories.v1;
+
+import "gomoneypb/v1/category.proto";
+
+service CategoriesService {
+  rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse) {}
+
+  rpc UpdateCategory(UpdateCategoryRequest) returns (UpdateCategoryResponse) {}
+  rpc DeleteCategory(DeleteCategoryRequest) returns (DeleteCategoryResponse) {}
+  rpc ListCategories(ListCategoriesRequest) returns (ListCategoriesResponse) {}
+}
+
+message CreateCategoryRequest {
+  gomoneypb.v1.Category category = 1;
+}
+
+message CreateCategoryResponse {
+  gomoneypb.v1.Category category = 1;
+}
+
+message UpdateCategoryRequest {
+  gomoneypb.v1.Category category = 1;
+}
+
+message UpdateCategoryResponse {
+  gomoneypb.v1.Category category = 1;
+}
+
+message DeleteCategoryRequest {
+  int32 id = 1;
+}
+
+message DeleteCategoryResponse {
+  gomoneypb.v1.Category category = 1;
+}
+
+message ListCategoriesRequest {
+  repeated int32 ids = 1;
+  bool include_deleted = 2;
+}
+
+message ListCategoriesResponse {
+  repeated gomoneypb.v1.Category categories = 1;
+}
