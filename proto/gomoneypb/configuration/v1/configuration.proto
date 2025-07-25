@@ -12,4 +12,6 @@ message GetConfigurationResponse {
   bool should_create_admin = 1;
   string base_currency = 2;
   string grafana_url = 3;
+  string backend_version = 4;
+  string commit_sha = 5;
 }
