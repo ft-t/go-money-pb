@@ -10,7 +10,6 @@ service CurrencyService {
 
   rpc CreateCurrency(CreateCurrencyRequest) returns (CreateCurrencyResponse) {}
   rpc UpdateCurrency(UpdateCurrencyRequest) returns (UpdateCurrencyResponse) {}
-  rpc DeleteCurrency(DeleteCurrencyRequest) returns (DeleteCurrencyResponse) {}
 }
 
 message DeleteCurrencyRequest {
@@ -42,7 +41,7 @@ message CreateCurrencyRequest {
 
 message GetCurrenciesRequest {
   repeated string ids = 1;
-  bool include_deleted = 2;
+  bool include_disabled = 2;
 }
 
 message GetCurrenciesResponse {
