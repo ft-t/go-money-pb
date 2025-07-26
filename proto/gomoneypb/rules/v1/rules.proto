@@ -12,13 +12,23 @@ service RulesService {
   rpc UpdateRule(UpdateRuleRequest) returns (UpdateRuleResponse) {}
   rpc DeleteRule(DeleteRuleRequest) returns (DeleteRuleResponse) {}
 
-  rpc CreateScheduledRule(CreateScheduledRuleRequest) returns (CreateScheduledRuleResponse) {}
-  rpc UpdateScheduledRule(UpdateScheduledRuleRequest) returns (UpdateScheduledRuleResponse) {}
-  rpc DeleteScheduledRule(DeleteScheduledRuleRequest) returns (DeleteScheduledRuleResponse) {}
+  rpc ListScheduleRules(ListScheduleRulesRequest) returns (ListScheduleRulesResponse) {}
+  rpc CreateScheduleRule(CreateScheduleRuleRequest) returns (CreateScheduleRuleResponse) {}
+  rpc UpdateScheduleRule(UpdateScheduleRuleRequest) returns (UpdateScheduleRuleResponse) {}
+  rpc DeleteScheduleRule(DeleteScheduleRuleRequest) returns (DeleteScheduleRuleResponse) {}
 
 
   rpc DryRunRule(DryRunRuleRequest) returns (DryRunRuleResponse) {}
   rpc ValidateCronExpression(ValidateCronExpressionRequest) returns (ValidateCronExpressionResponse) {}
+}
+
+message ListScheduleRulesRequest {
+  repeated int32 ids = 1;
+  bool include_deleted = 2;
+}
+
+message ListScheduleRulesResponse {
+  repeated gomoneypb.v1.ScheduleRule rules = 1;
 }
 
 message ValidateCronExpressionRequest {
@@ -30,27 +40,27 @@ message ValidateCronExpressionResponse {
   string error_message = 2; // If valid is false, this will contain the error message
 }
 
-message CreateScheduledRuleRequest {
+message CreateScheduleRuleRequest {
   gomoneypb.v1.ScheduleRule rule = 1;
 }
 
-message CreateScheduledRuleResponse {
+message CreateScheduleRuleResponse {
   gomoneypb.v1.ScheduleRule rule = 1;
 }
 
-message UpdateScheduledRuleRequest {
+message UpdateScheduleRuleRequest {
   gomoneypb.v1.ScheduleRule rule = 1;
 }
 
-message UpdateScheduledRuleResponse {
+message UpdateScheduleRuleResponse {
   gomoneypb.v1.ScheduleRule rule = 1;
 }
 
-message DeleteScheduledRuleRequest {
+message DeleteScheduleRuleRequest {
   int32 id = 1;
 }
 
-message DeleteScheduledRuleResponse {
+message DeleteScheduleRuleResponse {
   gomoneypb.v1.ScheduleRule rule = 1;
 }
 
