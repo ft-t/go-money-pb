@@ -12,8 +12,48 @@ service RulesService {
   rpc UpdateRule(UpdateRuleRequest) returns (UpdateRuleResponse) {}
   rpc DeleteRule(DeleteRuleRequest) returns (DeleteRuleResponse) {}
 
+  rpc CreateScheduledRule(CreateScheduledRuleRequest) returns (CreateScheduledRuleResponse) {}
+  rpc UpdateScheduledRule(UpdateScheduledRuleRequest) returns (UpdateScheduledRuleResponse) {}
+  rpc DeleteScheduledRule(DeleteScheduledRuleRequest) returns (DeleteScheduledRuleResponse) {}
+
+
   rpc DryRunRule(DryRunRuleRequest) returns (DryRunRuleResponse) {}
+  rpc ValidateCronExpression(ValidateCronExpressionRequest) returns (ValidateCronExpressionResponse) {}
 }
+
+message ValidateCronExpressionRequest {
+  string cron_expression = 1;
+}
+
+message ValidateCronExpressionResponse {
+  bool valid = 1;
+  string error_message = 2; // If valid is false, this will contain the error message
+}
+
+message CreateScheduledRuleRequest {
+  gomoneypb.v1.ScheduleRule rule = 1;
+}
+
+message CreateScheduledRuleResponse {
+  gomoneypb.v1.ScheduleRule rule = 1;
+}
+
+message UpdateScheduledRuleRequest {
+  gomoneypb.v1.ScheduleRule rule = 1;
+}
+
+message UpdateScheduledRuleResponse {
+  gomoneypb.v1.ScheduleRule rule = 1;
+}
+
+message DeleteScheduledRuleRequest {
+  int32 id = 1;
+}
+
+message DeleteScheduledRuleResponse {
+  gomoneypb.v1.ScheduleRule rule = 1;
+}
+
 
 message DryRunRuleRequest {
   gomoneypb.v1.Rule rule = 1;

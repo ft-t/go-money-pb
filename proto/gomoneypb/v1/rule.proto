@@ -4,6 +4,23 @@ package gomoneypb.v1;
 
 import "google/protobuf/timestamp.proto";
 
+message ScheduleRule {
+  int32 id = 1;
+
+  string title = 2;
+  string script = 3;
+  string cron_expression = 4;
+
+  RuleInterpreterType interpreter = 5;
+
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+
+  bool enabled = 8;
+
+  optional google.protobuf.Timestamp deleted_at = 10;
+}
+
 message Rule {
   int32 id = 1;
 
