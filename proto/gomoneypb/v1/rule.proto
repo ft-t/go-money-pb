@@ -19,6 +19,7 @@ message ScheduleRule {
   bool enabled = 8;
 
   optional google.protobuf.Timestamp deleted_at = 10;
+  string group_name = 11;
 }
 
 message Rule {
