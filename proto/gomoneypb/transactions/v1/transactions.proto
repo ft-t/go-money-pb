@@ -94,6 +94,10 @@ message Withdrawal {
 
   optional string foreign_amount = 4;
   optional string foreign_currency = 5;
+
+  optional int32 destination_account_id = 6;
+  optional string destination_amount = 7;
+  optional string destination_currency = 8;
 }
 
 message TransferBetweenAccounts {
