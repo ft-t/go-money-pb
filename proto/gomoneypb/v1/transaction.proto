@@ -10,8 +10,8 @@ message Transaction {
   optional string source_amount = 2;
   optional string source_currency = 3;
 
-  optional string source_amount_in_foreign_currency = 20;
-  optional string source_currency_in_foreign_currency = 21;
+  optional string fx_source_amount = 20;
+  optional string fx_source_currency = 21;
 
   optional string destination_amount = 4;
   optional string destination_currency = 5;

@@ -92,8 +92,8 @@ message Withdrawal {
   string source_currency = 2;
   int32 source_account_id = 3;
 
-  optional string foreign_amount = 4;
-  optional string foreign_currency = 5;
+  optional string fx_source_amount = 20;
+  optional string fx_source_currency = 21;
 
   optional int32 destination_account_id = 6;
   optional string destination_amount = 7;
