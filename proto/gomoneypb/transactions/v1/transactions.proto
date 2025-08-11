@@ -3,6 +3,7 @@ syntax = "proto3";
 package gomoneypb.transactions.v1;
 
 import "gomoneypb/v1/transaction.proto";
+import "gomoneypb/v1/account.proto";
 import "google/protobuf/timestamp.proto";
 
 service TransactionsService {
@@ -10,6 +11,21 @@ service TransactionsService {
   rpc UpdateTransaction(UpdateTransactionRequest) returns (UpdateTransactionResponse) {}
 
   rpc ListTransactions(ListTransactionsRequest) returns (ListTransactionsResponse) {}
+
+  rpc GetApplicableAccounts(GetApplicableAccountsRequest) returns (GetApplicableAccountsResponse) {}
+}
+
+message GetApplicableAccountsRequest {
+}
+
+message GetApplicableAccountsResponse {
+  message ApplicableRecord {
+    repeated gomoneypb.v1.Account source_accounts = 1;
+    repeated gomoneypb.v1.Account destination_accounts = 2;
+    gomoneypb.v1.TransactionType transaction_type = 3;
+  }
+
+  repeated ApplicableRecord applicable_records = 1;
 }
 
 message UpdateTransactionRequest {
