@@ -92,7 +92,7 @@ message CreateTransactionRequest {
   oneof transaction {
     TransferBetweenAccounts transfer_between_accounts = 4;
     Income income = 5;
-    Expense withdrawal = 6;
+    Expense expense = 6;
     Adjustment reconciliation = 8;
   }
 }
