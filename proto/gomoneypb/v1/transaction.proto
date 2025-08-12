@@ -7,17 +7,17 @@ import "google/protobuf/timestamp.proto";
 message Transaction {
   int64 id = 1;
 
-  optional string source_amount = 2;
-  optional string source_currency = 3;
+  string source_amount = 2;
+  string source_currency = 3;
 
   optional string fx_source_amount = 20;
   optional string fx_source_currency = 21;
 
-  optional string destination_amount = 4;
-  optional string destination_currency = 5;
+  string destination_amount = 4;
+  string destination_currency = 5;
 
-  optional int32 source_account_id = 6;
-  optional int32 destination_account_id = 7;
+  int32 source_account_id = 6;
+  int32 destination_account_id = 7;
 
   repeated int32 tag_ids = 8;
 
