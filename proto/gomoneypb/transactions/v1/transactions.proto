@@ -91,19 +91,19 @@ message CreateTransactionRequest {
 
   oneof transaction {
     TransferBetweenAccounts transfer_between_accounts = 4;
-    Deposit deposit = 5;
-    Withdrawal withdrawal = 6;
-    Reconciliation reconciliation = 8;
+    Income income = 5;
+    Expense withdrawal = 6;
+    Adjustment reconciliation = 8;
   }
 }
 
-message Reconciliation {
+message Adjustment {
   string destination_amount = 1;
   string destination_currency = 2;
   int32 destination_account_id = 3;
 }
 
-message Withdrawal {
+message Expense {
   string source_amount = 1;
   string source_currency = 2;
   int32 source_account_id = 3;
@@ -111,9 +111,9 @@ message Withdrawal {
   optional string fx_source_amount = 20;
   optional string fx_source_currency = 21;
 
-  optional int32 destination_account_id = 6;
-  optional string destination_amount = 7;
-  optional string destination_currency = 8;
+  int32 destination_account_id = 6;
+  string destination_amount = 7;
+  string destination_currency = 8;
 }
 
 message TransferBetweenAccounts {
@@ -127,10 +127,15 @@ message TransferBetweenAccounts {
   string destination_currency = 6;
 }
 
-message Deposit {
-  string destination_amount = 1;
-  string destination_currency = 2;
-  int32 destination_account_id = 3;
+message Income {
+  int32 source_account_id = 1;
+  int32 destination_account_id = 2;
+
+  string source_amount = 3;
+  string destination_amount = 4;
+
+  string source_currency = 5;
+  string destination_currency = 6;
 }
 
 message CreateTransactionResponse {
