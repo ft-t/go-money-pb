@@ -23,7 +23,7 @@ message Account {
   string iban = 11;
   string account_number = 12;
   optional int32 display_order = 13;
-  
+
   int64 flags = 14;
 }
 
@@ -33,4 +33,5 @@ enum AccountType {
   ACCOUNT_TYPE_LIABILITY = 4;
   ACCOUNT_TYPE_EXPENSE = 5;
   ACCOUNT_TYPE_INCOME = 6;
+  ACCOUNT_TYPE_ADJUSTMENT = 7;
 }
