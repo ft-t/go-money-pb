@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package gomoneypb.maintenance.v1;
+
+service MaintenanceService {
+  rpc RecalculateAll(RecalculateAllRequest) returns (RecalculateAllResponse) {}
+}
+
+message RecalculateAllRequest {
+}
+
+message RecalculateAllResponse {
+  bool success = 1;
+}
