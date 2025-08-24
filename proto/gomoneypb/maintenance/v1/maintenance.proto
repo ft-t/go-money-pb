@@ -7,6 +7,8 @@ service MaintenanceService {
 }
 
 message RecalculateAllRequest {
+  bool skip_all_validations = 1;
+  bool skip_account_dest_validation = 2;
 }
 
 message RecalculateAllResponse {
