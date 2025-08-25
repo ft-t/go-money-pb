@@ -13,9 +13,20 @@ service TransactionsService {
   rpc ListTransactions(ListTransactionsRequest) returns (ListTransactionsResponse) {}
 
   rpc GetApplicableAccounts(GetApplicableAccountsRequest) returns (GetApplicableAccountsResponse) {}
+  
+  rpc GetTitleSuggestions(GetTitleSuggestionsRequest) returns (GetTitleSuggestionsResponse) {}
 }
 
 message GetApplicableAccountsRequest {
+}
+
+message GetTitleSuggestionsRequest {
+  string query = 1;
+  int32 limit = 2;
+}
+
+message GetTitleSuggestionsResponse {
+  repeated string titles = 1;
 }
 
 message GetApplicableAccountsResponse {
