@@ -10,7 +10,7 @@ service AnalyticsService {
 }
 
 message GetDebitsAndCreditsSummaryRequest {
-  int32 account_ids = 1;
+  repeated int32 account_ids = 1;
 
   google.protobuf.Timestamp start_at = 2;
   google.protobuf.Timestamp end_at = 3;
