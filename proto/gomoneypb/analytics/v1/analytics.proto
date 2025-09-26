@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package gomoneypb.analytics.v1;
+
+import "gomoneypb/v1/account.proto";
+import "google/protobuf/timestamp.proto";
+
+service AnalyticsService {
+  rpc GetDebitsAndCreditsSummary(GetDebitsAndCreditsSummaryRequest) returns (GetDebitsAndCreditsSummaryResponse) {}
+}
+
+message GetDebitsAndCreditsSummaryRequest {
+  int32 account_ids = 1;
+
+  google.protobuf.Timestamp start_at = 2;
+  google.protobuf.Timestamp end_at = 3;
+}
+
+message GetDebitsAndCreditsSummaryResponse {
+  message SummaryItem {
+    int32 total_debits_count = 2;
+    int32 total_credits_count = 3;
+    
+    int32 total_debits_amount = 4;
+    int32 total_credits_amount = 5;
+  }
+
+  map<int32, SummaryItem> items = 1;
+}
