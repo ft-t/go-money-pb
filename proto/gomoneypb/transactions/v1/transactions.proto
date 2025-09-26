@@ -10,11 +10,21 @@ service TransactionsService {
   rpc CreateTransaction(CreateTransactionRequest) returns (CreateTransactionResponse) {}
   rpc UpdateTransaction(UpdateTransactionRequest) returns (UpdateTransactionResponse) {}
 
+  rpc DeleteTransactions(DeleteTransactionsRequest) returns (DeleteTransactionsRequest) {}
+  
   rpc ListTransactions(ListTransactionsRequest) returns (ListTransactionsResponse) {}
 
   rpc GetApplicableAccounts(GetApplicableAccountsRequest) returns (GetApplicableAccountsResponse) {}
   
   rpc GetTitleSuggestions(GetTitleSuggestionsRequest) returns (GetTitleSuggestionsResponse) {}
+}
+
+message DeleteTransactionsRequest {
+  repeated int64 ids = 1;
+}
+
+message DeleteTransactionsResponse {
+  int32 deleted_count = 1;
 }
 
 message GetApplicableAccountsRequest {
@@ -27,6 +37,10 @@ message GetTitleSuggestionsRequest {
 
 message GetTitleSuggestionsResponse {
   repeated string titles = 1;
+}
+
+message DeleteTransactionRequest {
+  int64 id = 1;
 }
 
 message GetApplicableAccountsResponse {
@@ -75,6 +89,8 @@ message ListTransactionsRequest {
 
   repeated int32 ids = 14;
   repeated int32 category_ids = 15;
+  
+  bool include_deleted = 16;
 }
 
 enum SortField {
