@@ -2,8 +2,22 @@ syntax = "proto3";
 
 package gomoneypb.import.v1;
 
+import "gomoneypb/transactions/v1/transactions.proto";
+
 service ImportService {
   rpc ImportTransactions(ImportTransactionsRequest) returns (ImportTransactionsResponse) {}
+
+  rpc ParseTransactions(ParseTransactionsRequest) returns (ParseTransactionsResponse) {}
+}
+
+message ParseTransactionsRequest {
+  repeated string content = 1; // file or raw content depending on source
+  ImportSource source = 2;
+  bool treat_dates_as_utc = 4;
+}
+
+message ParseTransactionsResponse {
+  repeated gomoneypb.transactions.v1.CreateTransactionRequest requests = 1;
 }
 
 message ImportTransactionsRequest {

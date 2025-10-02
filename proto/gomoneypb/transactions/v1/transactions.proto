@@ -8,6 +8,8 @@ import "google/protobuf/timestamp.proto";
 
 service TransactionsService {
   rpc CreateTransaction(CreateTransactionRequest) returns (CreateTransactionResponse) {}
+  rpc CreateTransactionsBulk(CreateTransactionsBulkRequest) returns (CreateTransactionsBulkResponse) {}
+  
   rpc UpdateTransaction(UpdateTransactionRequest) returns (UpdateTransactionResponse) {}
 
   rpc DeleteTransactions(DeleteTransactionsRequest) returns (DeleteTransactionsRequest) {}
@@ -18,6 +20,15 @@ service TransactionsService {
   
   rpc GetTitleSuggestions(GetTitleSuggestionsRequest) returns (GetTitleSuggestionsResponse) {}
 }
+
+message CreateTransactionsBulkRequest {
+  repeated CreateTransactionRequest transactions = 1;
+}
+
+message CreateTransactionsBulkResponse {
+  repeated gomoneypb.v1.Transaction transactions = 1;
+}
+
 
 message DeleteTransactionsRequest {
   repeated int64 ids = 1;
