@@ -3,6 +3,7 @@ syntax = "proto3";
 package gomoneypb.import.v1;
 
 import "gomoneypb/transactions/v1/transactions.proto";
+import "gomoneypb/v1/transaction.proto";
 
 service ImportService {
   rpc ImportTransactions(ImportTransactionsRequest) returns (ImportTransactionsResponse) {}
@@ -17,7 +18,7 @@ message ParseTransactionsRequest {
 }
 
 message ParseTransactionsResponse {
-  repeated gomoneypb.transactions.v1.CreateTransactionRequest requests = 1;
+  repeated gomoneypb.v1.Transaction transactions = 1;
 }
 
 message ImportTransactionsRequest {
