@@ -19,7 +19,12 @@ message ParseTransactionsRequest {
 }
 
 message ParseTransactionsResponse {
-  repeated gomoneypb.v1.Transaction transactions = 1;
+  message ParsedTransaction {
+    gomoneypb.v1.Transaction transaction = 1;
+    bool is_duplicate = 2;
+  }
+  
+  repeated ParsedTransaction transactions = 1;
 }
 
 message ImportTransactionsRequest {
