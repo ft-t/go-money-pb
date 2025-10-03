@@ -21,7 +21,7 @@ message ParseTransactionsRequest {
 message ParseTransactionsResponse {
   message ParsedTransaction {
     gomoneypb.v1.Transaction transaction = 1;
-    bool is_duplicate = 2;
+    optional int64 duplicate_transaction_id = 2;
   }
   
   repeated ParsedTransaction transactions = 1;
