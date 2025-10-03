@@ -12,8 +12,9 @@ service ImportService {
 }
 
 message ParseTransactionsRequest {
-  repeated string content = 1; // file or raw content depending on source
+  repeated string content = 1; // file, multiple files or raw content depending on source
   ImportSource source = 2;
+
   bool treat_dates_as_utc = 4;
 }
 
@@ -22,7 +23,7 @@ message ParseTransactionsResponse {
 }
 
 message ImportTransactionsRequest {
-  string file_content = 1; // base64 encoded content of the Firefly file
+  repeated string content = 1; // file, multiple files or raw content depending on source
   ImportSource source = 2;
   bool skip_rules = 3;
   bool treat_dates_as_utc = 4;
@@ -32,7 +33,6 @@ message ImportTransactionsResponse {
   int32 imported_count = 1;
   int32 duplicate_count = 2;
 }
-
 
 enum ImportSource {
   IMPORT_SOURCE_UNSPECIFIED = 0;
