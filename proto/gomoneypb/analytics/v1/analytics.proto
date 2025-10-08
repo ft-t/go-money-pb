@@ -21,8 +21,8 @@ message GetDebitsAndCreditsSummaryResponse {
     int32 total_debits_count = 2;
     int32 total_credits_count = 3;
     
-    int32 total_debits_amount = 4;
-    int32 total_credits_amount = 5;
+    string total_debits_amount = 4;
+    string total_credits_amount = 5;
   }
 
   map<int32, SummaryItem> items = 1;
