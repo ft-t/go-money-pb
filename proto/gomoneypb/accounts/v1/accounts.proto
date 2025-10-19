@@ -43,6 +43,7 @@ message UpdateAccountRequest {
   string account_number = 8;
   optional int32 display_order = 9;
   int64 flags = 10;
+  repeated int32 tag_ids = 11;
 }
 
 message UpdateAccountResponse {
@@ -87,6 +88,7 @@ message CreateAccountRequest {
 
   optional int32 display_order = 13;
   int64 flags = 14;
+  repeated int32 tag_ids = 15;
 }
 
 message CreateAccountResponse {
