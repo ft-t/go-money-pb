@@ -102,6 +102,8 @@ message ListTransactionsRequest {
   repeated int32 category_ids = 15;
   
   bool include_deleted = 16;
+  
+  optional string group_key = 17;
 }
 
 enum SortField {
@@ -123,6 +125,7 @@ message CreateTransactionRequest {
   optional string reference_number = 10;
   repeated string internal_reference_numbers = 11;
 
+  optional string group_key = 14;
   bool skip_rules = 12;
 
   optional int32 category_id = 13;

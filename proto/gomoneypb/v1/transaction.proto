@@ -32,10 +32,11 @@ message Transaction {
   string title = 15;
 
   optional string reference_number = 16;
-  optional string internal_reference_number = 17;
   optional int32 display_order = 18;
+  repeated string internal_reference_numbers = 22;
 
   optional int32 category_id = 19;
+  optional string group_key = 23;
 }
 
 enum TransactionType {
