@@ -121,7 +121,7 @@ message CreateTransactionRequest {
   google.protobuf.Timestamp transaction_date = 7;
   string title = 9;
   optional string reference_number = 10;
-  optional string internal_reference_number = 11;
+  repeated string internal_reference_numbers = 11;
 
   bool skip_rules = 12;
 
