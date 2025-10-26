@@ -25,6 +25,7 @@ message Account {
   optional int32 display_order = 13;
 
   int64 flags = 14;
+  repeated int32 tag_ids = 15;
 }
 
 enum AccountType {

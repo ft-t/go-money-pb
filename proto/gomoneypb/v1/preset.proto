@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package gomoneypb.v1;
+
+import "google/protobuf/timestamp.proto";
+import "gomoneypb/v1/transaction.proto";
+
+message Preset {
+  int32 id = 1;
+  string title = 2;
+  gomoneypb.v1.Transaction transaction = 3;
+  map<string, string> extra = 4;
+}
+  

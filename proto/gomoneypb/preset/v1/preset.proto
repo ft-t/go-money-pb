@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package gomoneypb.preset.v1;
+
+
+import "gomoneypb/v1/preset.proto";
+
+service PresetService {
+  rpc ListPresets(ListPresetsRequest) returns (ListPresetsResponse) {}
+  rpc UpsertPreset(UpsertPresetRequest) returns (UpsertPresetResponse) {}
+}
+
+message ListPresetsRequest {}
+
+message ListPresetsResponse {
+  repeated gomoneypb.v1.Preset presets = 1;
+}
+
+message UpsertPresetRequest {
+  gomoneypb.v1.Preset preset = 1;
+}
+
+message UpsertPresetResponse {
+  gomoneypb.v1.Preset preset = 1;
+}
