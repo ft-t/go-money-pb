@@ -31,6 +31,7 @@ message Transaction {
   map<string, string> extra = 14;
   string title = 15;
 
+  optional string reference_number = 16;
   optional int32 display_order = 18;
   repeated string internal_reference_numbers = 22;
 
