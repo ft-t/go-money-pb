@@ -122,7 +122,6 @@ message CreateTransactionRequest {
   repeated int32 tag_ids = 3;
   google.protobuf.Timestamp transaction_date = 7;
   string title = 9;
-  optional string reference_number = 10;
   repeated string internal_reference_numbers = 11;
 
   optional string group_key = 14;
