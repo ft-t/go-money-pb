@@ -5,6 +5,16 @@ package gomoneypb.configuration.v1;
 service ConfigurationService {
   rpc GetConfiguration(GetConfigurationRequest) returns (GetConfigurationResponse) {}
   rpc GetConfigsByKeys(GetConfigsByKeysRequest) returns (GetConfigsByKeysResponse) {}
+  rpc SetConfigByKey(SetConfigByKeyRequest) returns (SetConfigByKeyResponse) {}
+}
+
+message SetConfigByKeyRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message SetConfigByKeyResponse {
+  string key = 1;
 }
 
 message GetConfigsByKeysRequest {
