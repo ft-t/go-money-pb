@@ -2,10 +2,43 @@ syntax = "proto3";
 
 package gomoneypb.configuration.v1;
 
+import "gomoneypb/v1/servicetoken.proto";
+import "google/protobuf/timestamp.proto";
+
 service ConfigurationService {
   rpc GetConfiguration(GetConfigurationRequest) returns (GetConfigurationResponse) {}
   rpc GetConfigsByKeys(GetConfigsByKeysRequest) returns (GetConfigsByKeysResponse) {}
   rpc SetConfigByKey(SetConfigByKeyRequest) returns (SetConfigByKeyResponse) {}
+  
+  rpc GetServiceTokens(GetServiceTokensRequest) returns (GetServiceTokensResponse) {}
+  rpc CreateServiceToken(CreateServiceTokenRequest) returns (CreateServiceTokenResponse) {}
+  rpc RevokeServiceToken(RevokeServiceTokenRequest) returns (RevokeServiceTokenResponse) {}
+}
+
+message RevokeServiceTokenRequest {
+  int32 id = 1;
+}
+
+message RevokeServiceTokenResponse {
+  int32 id = 1;
+}
+
+message GetServiceTokensRequest {
+  repeated string ids = 1;
+}
+
+message GetServiceTokensResponse {
+  repeated gomoneypb.v1.ServiceToken service_tokens = 1;
+}
+
+message CreateServiceTokenRequest {
+  string name = 1;
+  google.protobuf.Timestamp expires_at = 2;
+}
+
+message CreateServiceTokenResponse {
+  gomoneypb.v1.ServiceToken service_token = 1;
+  string token = 2;
 }
 
 message SetConfigByKeyRequest {
