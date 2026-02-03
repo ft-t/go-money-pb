@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package gomoneypb.analytics.v1;
 
-import "gomoneypb/v1/account.proto";
 import "google/protobuf/timestamp.proto";
 
 service AnalyticsService {

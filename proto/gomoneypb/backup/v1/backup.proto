@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package gomoneypb.backup.v1;
+
+import "google/protobuf/timestamp.proto";
+
+service BackupService {
+  rpc CreateBackup(CreateBackupRequest) returns (CreateBackupResponse) {}
+  rpc ListBackups(ListBackupsRequest) returns (ListBackupsResponse) {}
+  rpc DownloadBackup(DownloadBackupRequest) returns (DownloadBackupResponse) {}
+  rpc DeleteBackup(DeleteBackupRequest) returns (DeleteBackupResponse) {}
+  rpc RestoreBackup(RestoreBackupRequest) returns (RestoreBackupResponse) {}
+  rpc RestoreBackupFromUpload(RestoreBackupFromUploadRequest) returns (RestoreBackupFromUploadResponse) {}
+}
+
+message BackupMetadata {
+  string filename = 1;
+  google.protobuf.Timestamp created_at = 2;
+  int64 size_bytes = 3;
+}
+
+message CreateBackupRequest {}
+
+message CreateBackupResponse {
+  BackupMetadata backup = 1;
+}
+
+message ListBackupsRequest {}
+
+message ListBackupsResponse {
+  repeated BackupMetadata backups = 1;
+}
+
+message DownloadBackupRequest {
+  string filename = 1;
+}
+
+message DownloadBackupResponse {
+  bytes content = 1;
+  string filename = 2;
+}
+
+message DeleteBackupRequest {
+  string filename = 1;
+}
+
+message DeleteBackupResponse {
+  bool success = 1;
+}
+
+message RestoreBackupRequest {
+  string filename = 1;
+  bool dry_run = 2;
+}
+
+message RestoreBackupFromUploadRequest {
+  bytes content = 1;
+  bool dry_run = 2;
+}
+
+message RestoreBackupResponse {
+  bool success = 1;
+  string auto_backup_file = 2;
+  int32 tables_restored = 3;
+  int64 records_restored = 4;
+  string error = 5;
+}
+
+message RestoreBackupFromUploadResponse {
+  bool success = 1;
+  string auto_backup_file = 2;
+  int32 tables_restored = 3;
+  int64 records_restored = 4;
+  string error = 5;
+}

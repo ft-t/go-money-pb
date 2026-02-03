@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package gomoneypb.import.v1;
 
-import "gomoneypb/transactions/v1/transactions.proto";
 import "gomoneypb/v1/transaction.proto";
 
 service ImportService {

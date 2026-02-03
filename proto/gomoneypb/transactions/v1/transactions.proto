@@ -12,7 +12,7 @@ service TransactionsService {
   
   rpc UpdateTransaction(UpdateTransactionRequest) returns (UpdateTransactionResponse) {}
 
-  rpc DeleteTransactions(DeleteTransactionsRequest) returns (DeleteTransactionsRequest) {}
+  rpc DeleteTransactions(DeleteTransactionsRequest) returns (DeleteTransactionsResponse) {}
   
   rpc ListTransactions(ListTransactionsRequest) returns (ListTransactionsResponse) {}
 
