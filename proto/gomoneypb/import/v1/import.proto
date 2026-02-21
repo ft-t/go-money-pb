@@ -15,6 +15,7 @@ message ParseTransactionsRequest {
   ImportSource source = 2;
 
   bool treat_dates_as_utc = 4;
+  bool skip_duplicate_reference_check = 5;
 }
 
 message ParseTransactionsResponse {
@@ -31,6 +32,7 @@ message ImportTransactionsRequest {
   ImportSource source = 2;
   bool skip_rules = 3;
   bool treat_dates_as_utc = 4;
+  bool skip_duplicate_reference_check = 5;
 }
 
 message ImportTransactionsResponse {
