@@ -33,11 +33,13 @@ message ImportTransactionsRequest {
   bool skip_rules = 3;
   bool treat_dates_as_utc = 4;
   bool skip_duplicate_reference_check = 5;
+  bool skip_validation_errors = 6;
 }
 
 message ImportTransactionsResponse {
   int32 imported_count = 1;
   int32 duplicate_count = 2;
+  int32 skipped_count = 3;
 }
 
 enum ImportSource {
