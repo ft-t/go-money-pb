@@ -53,6 +53,7 @@ message UpdateAccountResponse {
 message ListAccountsRequest {
   repeated int32 ids = 1;
   bool include_deleted = 2;
+  repeated int32 tag_ids = 3;
 }
 
 message ListAccountsResponse {
