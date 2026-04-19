@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package gomoneypb.transactions.history.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+service TransactionHistoryService {
+  rpc ListHistory(ListTransactionHistoryRequest) returns (ListTransactionHistoryResponse) {}
+}
+
+enum TransactionHistoryEventType {
+  TRANSACTION_HISTORY_EVENT_TYPE_UNSPECIFIED  = 0;
+  TRANSACTION_HISTORY_EVENT_TYPE_CREATED      = 1;
+  TRANSACTION_HISTORY_EVENT_TYPE_UPDATED      = 2;
+  TRANSACTION_HISTORY_EVENT_TYPE_DELETED      = 3;
+  TRANSACTION_HISTORY_EVENT_TYPE_RULE_APPLIED = 4;
+}
+
+enum TransactionHistoryActorType {
+  TRANSACTION_HISTORY_ACTOR_TYPE_UNSPECIFIED = 0;
+  TRANSACTION_HISTORY_ACTOR_TYPE_USER        = 1;
+  TRANSACTION_HISTORY_ACTOR_TYPE_RULE        = 2;
+  TRANSACTION_HISTORY_ACTOR_TYPE_SCHEDULER   = 3;
+  TRANSACTION_HISTORY_ACTOR_TYPE_IMPORTER    = 4;
+  TRANSACTION_HISTORY_ACTOR_TYPE_BULK        = 5;
+}
+
+message TransactionHistoryEvent {
+  int64                       id             = 1;
+  int64                       transaction_id = 2;
+  TransactionHistoryEventType event_type     = 3;
+  TransactionHistoryActorType actor_type     = 4;
+  optional int32              actor_user_id  = 5;
+  optional int32              actor_rule_id  = 6;
+  optional string             actor_extra    = 7;
+  google.protobuf.Struct      snapshot       = 8;
+  google.protobuf.Struct      diff           = 9;
+  google.protobuf.Timestamp   occurred_at    = 10;
+}
+
+message ListTransactionHistoryRequest {
+  int64 transaction_id = 1;
+}
+
+message ListTransactionHistoryResponse {
+  repeated TransactionHistoryEvent events = 1;
+}
