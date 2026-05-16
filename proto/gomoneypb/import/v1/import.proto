@@ -8,6 +8,8 @@ service ImportService {
   rpc ImportTransactions(ImportTransactionsRequest) returns (ImportTransactionsResponse) {}
 
   rpc ParseTransactions(ParseTransactionsRequest) returns (ParseTransactionsResponse) {}
+
+  rpc MarkTransactionsIgnored(MarkTransactionsIgnoredRequest) returns (MarkTransactionsIgnoredResponse) {}
 }
 
 message ParseTransactionsRequest {
@@ -22,9 +24,20 @@ message ParseTransactionsResponse {
   message ParsedTransaction {
     gomoneypb.v1.Transaction transaction = 1;
     optional int64 duplicate_transaction_id = 2;
+    bool ignored = 3;
   }
   
   repeated ParsedTransaction transactions = 1;
+}
+
+message MarkTransactionsIgnoredRequest {
+  ImportSource import_source = 1;
+  repeated string reference_numbers = 2;
+  optional string reason = 3;
+}
+
+message MarkTransactionsIgnoredResponse {
+  int32 ignored_count = 1;
 }
 
 message ImportTransactionsRequest {
