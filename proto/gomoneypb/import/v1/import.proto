@@ -15,9 +15,14 @@ service ImportService {
 message ParseTransactionsRequest {
   repeated string content = 1; // file, multiple files or raw content depending on source
   ImportSource source = 2;
-
+  bool skip_rules = 3;
   bool treat_dates_as_utc = 4;
   bool skip_duplicate_reference_check = 5;
+}
+
+message AppliedRule {
+  int32 rule_id = 1;
+  string diff_json = 2; // json-patch diff produced by the rule execution
 }
 
 message ParseTransactionsResponse {
@@ -25,8 +30,10 @@ message ParseTransactionsResponse {
     gomoneypb.v1.Transaction transaction = 1;
     optional int64 duplicate_transaction_id = 2;
     bool ignored = 3;
+    bool discarded = 4; // discarded by tx.discard() in a rule
+    repeated AppliedRule applied_rules = 5;
   }
-  
+
   repeated ParsedTransaction transactions = 1;
 }
 
@@ -53,6 +60,7 @@ message ImportTransactionsResponse {
   int32 imported_count = 1;
   int32 duplicate_count = 2;
   int32 skipped_count = 3;
+  int32 discarded_count = 4;
 }
 
 enum ImportSource {

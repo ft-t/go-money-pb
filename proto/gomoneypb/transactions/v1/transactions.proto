@@ -181,4 +181,5 @@ message Income {
 
 message CreateTransactionResponse {
   gomoneypb.v1.Transaction transaction = 1;
+  bool discarded = 2; // transaction was discarded by tx.discard() in a rule and not persisted
 }
